@@ -1,11 +1,24 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Hero from '../components/home/Hero.astro';
+import Nav from '../components/home/Nav.astro';
+import Services from '../components/home/Services.astro';
+import Testimonials from '../components/home/Testimonials.astro';
+import WhyChooseUs from '../components/home/WhyChooseUs.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Cecilia Home Design | 专业住宅设计与工程服务"
+  description="Cecilia Home Design 是加州领先的建筑设计公司，专注于定制住宅设计、结构工程和房屋翻新。为加州地区提供专业的住宅设计服务。"
+  image="/hero.jpg"
+  type="organization"
+>
+	<Nav />
+  <main class="">
+	<Hero />
+
+  <WhyChooseUs />
+  <Services />
+  <Testimonials />
+  </main>
 </Layout>

@@ -1,14 +1,266 @@
+---
+import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	canonicalURL?: string;
+	type?: 'organization' | 'service' | 'project' | 'article';
+	publishDate?: Date;
+	author?: string;
+	projectDate?: Date;
+	projectLocation?: string;
+	serviceArea?: string[];
+	children: any;
+}
+
+// 添加类型定义
+type ServiceSchema = {
+	"@context": "https://schema.org";
+	"@type": "Service";
+	name: string;
+	description: string;
+	provider: typeof organizationSchema;
+	areaServed: {
+		"@type": "State";
+		name: string;
+		addressCountry: string;
+	}[];
+	image: string;
+	url: string;
+}
+
+type ProjectSchema = {
+	"@context": "https://schema.org";
+	"@type": "CreativeWork";
+	name: string;
+	description: string;
+	image: string;
+	author: typeof organizationSchema;
+	dateCreated?: string;
+	spatial?: string;
+	url: string;
+	locationCreated?: {
+		"@type": "Place";
+		name: string;
+		address: {
+			"@type": "PostalAddress";
+			addressLocality: string;
+			addressRegion: string;
+			addressCountry: string;
+		};
+	};
+}
+
+type ArticleSchema = {
+	"@context": "https://schema.org";
+	"@type": "Article";
+	headline: string;
+	description: string;
+	image: string;
+	author: {
+		"@type": "Person";
+		name: string;
+	};
+	publisher: typeof organizationSchema;
+	datePublished?: string;
+	url: string;
+}
+
+const {
+	title = "cecilia home design",
+	description = "Leading architectural design firm in California, specializing in custom home design, structural engineering, and home renovations. Serving the California area with professional residential design services.",
+	image = "/default-social.png",
+	canonicalURL = Astro.url.href,
+	type = 'organization',
+	publishDate,
+	author,
+	projectDate,
+	projectLocation,
+	serviceArea,
+} = Astro.props;
+
+const SITE_URL = "https://www.ceciliahome.design";
+
+// 公司基础信息
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "HomeAndConstructionBusiness",
+	"name": "cecilia home",
+	"description": "Cecilia Home is a residential design firm that specializes in creating beautiful and functional living spaces.",
+	"url": SITE_URL,
+	"logo": new URL("/logo.png", SITE_URL).toString(),
+	"image": new URL(image, SITE_URL).toString(),
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Los Angeles",
+		"addressRegion": "CA",
+		"addressCountry": "US",
+		"streetAddress": "具体街道地址"
+	},
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"telephone": "+1-510-909-1933",
+		"contactType": "customer service",
+		"email": "contact@ceciliahome.net"
+	},
+	"sameAs": [
+		"https://weibo.com/yourcompany",
+		"https://www.zhihu.com/org/yourcompany"
+	],
+	"areaServed": {
+		"@type": "State",
+		"name": "California",
+		"addressCountry": "US"
+	},
+	"hasOfferCatalog": {
+		"@type": "OfferCatalog",
+		"name": "Design Services",
+		"itemListElement": [
+			{
+				"@type": "Service",
+				"name": "Architectural Design",
+				"description": "Custom architectural design services for residential properties"
+			},
+			{
+				"@type": "Service",
+				"name": "Structural Engineering",
+				"description": "Professional structural engineering and design services"
+			},
+			{
+				"@type": "Service",
+				"name": "Home Renovation",
+				"description": "Complete home renovation and remodeling services"
+			},
+			{
+				"@type": "Service",
+				"name": "Home Addition",
+				"description": "House addition and expansion design services"
+			}
+		]
+	}
+};
+
+// 根据页面类型选择不同的 Schema
+let schema: typeof organizationSchema | ServiceSchema | ProjectSchema | ArticleSchema = organizationSchema;
+
+if (type === 'service') {
+	schema = {
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"name": title,
+		"description": description,
+		"provider": organizationSchema,
+		"areaServed": serviceArea?.map(area => ({
+			"@type": "State",
+			"name": area,
+			"addressCountry": "US"
+		})) || [{
+			"@type": "State",
+			"name": "California",
+			"addressCountry": "US"
+		}],
+		"image": new URL(image, SITE_URL).toString(),
+		"url": SITE_URL
+	} as ServiceSchema;
+} else if (type === 'project') {
+	schema = {
+		"@context": "https://schema.org",
+		"@type": "CreativeWork",
+		"name": title,
+		"description": description,
+		"image": new URL(image, SITE_URL).toString(),
+		"author": organizationSchema,
+		"dateCreated": projectDate?.toISOString(),
+		"spatial": projectLocation,
+		"url": SITE_URL,
+		"locationCreated": projectLocation ? {
+			"@type": "Place",
+			"name": projectLocation,
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": projectLocation,
+				"addressRegion": "CA",
+				"addressCountry": "US"
+			}
+		} : undefined,
+	} as ProjectSchema;
+} else if (type === 'article') {
+	schema = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": title,
+		"description": description,
+		"image": new URL(image, SITE_URL).toString(),
+		"author": {
+			"@type": "Person",
+			"name": author
+		},
+		"publisher": organizationSchema,
+		"datePublished": publishDate?.toISOString(),
+		"url": SITE_URL
+	} as ArticleSchema;
+}
+---
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
+		<!-- 设置文档字符编码为 UTF-8，确保正确显示各种语言字符 -->
 		<meta charset="UTF-8" />
+		
+		<!-- 设置移动端视口，确保响应式布局正常工作 -->
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+		<!-- 设置网站图标 -->
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		
+		<!-- 标识网站使用 Astro 构建，这是 Astro 自动添加的 -->
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+
+		<!-- 基础 SEO 三要素 -->
+		<!-- 1. 网页标题：搜索引擎结果中最明显的部分，对 SEO 权重很高 -->
+		<title>{title}</title>
+		<!-- 2. 网页描述：搜索结果中显示的预览文本，建议 150-160 字符 -->
+		<meta name="description" content={description} />
+		<!-- 3. 规范链接：告诉搜索引擎这个页面的主要版本，避免重复内容问题 -->
+		<link rel="canonical" href={new URL(Astro.url.pathname, SITE_URL).toString()} />
+
+		<!-- Open Graph 协议：针对 Facebook 等社交平台的优化 -->
+		<!-- og:type 指定内容类型 -->
+		<meta property="og:type" content="website" />
+		<!-- og:url 指定页面链接 -->
+		<meta property="og:url" content={SITE_URL} />
+		<!-- og:title 社交分享时显示的标题 -->
+		<meta property="og:title" content={title} />
+		<!-- og:description 社交分享时显示的描述 -->
+		<meta property="og:description" content={description} />
+		<!-- og:image 社交分享时显示的图片，需要完整 URL -->
+		<meta property="og:image" content={new URL(image, SITE_URL).toString()} />
+
+		<!-- Twitter 卡片：针对 Twitter 平台的优化 -->
+		<!-- twitter:card 指定卡片类型，large image 是大图模式 -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<!-- twitter:url 指定页面链接 -->
+		<meta property="twitter:url" content={SITE_URL} />
+		<!-- twitter:title 推文中显示的标题 -->
+		<meta property="twitter:title" content={title} />
+		<!-- twitter:description 推文中显示的描述 -->
+		<meta property="twitter:description" content={description} />
+		<!-- twitter:image 推文中显示的图片，需要完整 URL -->
+		<meta property="twitter:image" content={new URL(image, SITE_URL).toString()} />
+
+		<!-- JSON-LD 结构化数据 -->
+		<Fragment set:html={`
+			<script type="application/ld+json">
+				${JSON.stringify(schema)}
+			</script>
+		`} />
 	</head>
-	<body>
+	<body class="">
 		<slot />
+		<Footer />
 	</body>
 </html>
 

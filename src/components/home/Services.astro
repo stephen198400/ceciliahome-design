@@ -1,0 +1,111 @@
+---
+const services = [
+  {
+    title: "ADU Design & Planning",
+    slug: "/services/adu-design",
+    question: "Looking to maximize your property value with an ADU but don't know where to start?",
+    description: "Our expert team provides comprehensive ADU services from concept to permits, helping you legally maximize your property value with additional living space.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    </svg>`
+  },
+  {
+    title: "Structural Engineering",
+    slug: "/services/structural-engineering",
+    question: "Need professional structural engineering to ensure your building's safety and compliance?",
+    description: "We offer complete structural design and analysis services, including new construction, renovations, and seismic retrofitting, all compliant with California's latest building codes.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+    </svg>`
+  },
+  {
+    title: "Home Renovation",
+    slug: "/services/home-renovation",
+    question: "Want to upgrade your home but concerned about construction quality and permits?",
+    description: "From kitchen and bathroom updates to whole-house renovations, our professional team provides complete design and construction drawings to ensure your project's success.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+    </svg>`
+  },
+  {
+    title: "Seismic Retrofitting",
+    slug: "/services/seismic-retrofitting",
+    question: "Worried about your building's earthquake safety?",
+    description: "We provide expert seismic evaluation and retrofitting solutions, utilizing the latest earthquake-resistant technologies to enhance your building's structural integrity.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+    </svg>`
+  },
+  {
+    title: "Building Inspection",
+    slug: "/services/building-inspection",
+    question: "Dealing with building damage or code violations?",
+    description: "Our professional engineering team offers comprehensive building inspection services, from structural safety to fire damage assessment, providing expert solutions for your building concerns.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+    </svg>`
+  },
+  {
+    title: "Commercial Design",
+    slug: "/services/commercial-design",
+    question: "Need professional commercial space design to elevate your business?",
+    description: "We provide specialized design services for restaurants, retail spaces, and commercial properties, ensuring both aesthetic appeal and regulatory compliance.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+    </svg>`
+  },
+  {
+    title: "Retaining Wall Design",
+    slug: "/services/retaining-wall",
+    description: "Expert design of retaining walls for slope stability and landscape architecture, ensuring safety and aesthetics.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>`
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <span class="text-blue-600 font-medium mb-4 block">Professional Services</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Expert Design & Engineering Solutions</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        We provide comprehensive architectural design and structural engineering services, delivering customized solutions for all your building needs.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {services.slice(0, 6).map(service => (
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+          <div class="space-y-4">
+            <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+              <Fragment set:html={service.svg} />
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                <a href={service.slug} class="hover:text-blue-600 transition-colors duration-300">
+                  {service.title}
+                </a>
+              </h3>
+              <p class="text-gray-700 font-medium mb-2">{service.question}</p>
+              <p class="text-gray-500 leading-relaxed">{service.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a
+        href="/services"
+        class="inline-flex items-center justify-center px-8 py-3 border border-blue-600 text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 transition-colors duration-300"
+      >
+        Learn More About Our Services
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section> 
