@@ -1,7 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import googleLogo from '../../assets/google.png';
+import heroImage from '../../assets/hero.jpg';
 import thumbtackLogo from '../../assets/thumbtack.png';
+
 ---
 
 <section class="bg-py-20 overflow-hidden bg-gray-100">
@@ -83,8 +85,8 @@ import thumbtackLogo from '../../assets/thumbtack.png';
       <!-- Right Image -->
       <div class="w-full md:w-1/2 flex items-stretch ">
         <div class="w-full bg-primary-50 rounded-2xl sm:rounded-3xl lg:rounded-4xl ">
-          <img
-            src="/src/assets/hero.jpg"
+          <Image
+            src={heroImage}
             alt="Professional Designer"
             class="w-full h-full object-cover rounded-xl sm:rounded-2xl lg:rounded-3xl"
           />
