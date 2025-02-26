@@ -1,0 +1,269 @@
+<section class="bg-blue-700 py-16 sm:py-20 lg:py-24">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-4 lg:gap-16">
+      <!-- Left Content -->
+      <div class="w-full lg:w-1/2">
+        <div class="max-w-xl">
+          <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Transform your space today!
+          </h2>
+          <p class="text-white/80 text-lg sm:text-xl mb-8">
+            Get in touch with our professional design team. We'll transform your ideas into reality with our expert structural design services.
+          </p>
+          <ul class="space-y-4 md:block hidden text-white/90">
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Professional structural design expertise</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Customized solutions for your unique needs</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Timely delivery and excellent customer service</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Right Form -->
+      <div class="w-full lg:w-1/2">
+        <div class="bg-white p-8 rounded-xl shadow-xl">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Get In Touch</h3>
+          <form action="/thank-you" method="POST" class="lg:space-y-2 space-y-1" id="contactForm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:gap-5 gap-1">
+              <div class="space-y-2">
+                <label for="name" class="text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  placeholder="John Doe"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  required
+                  minlength="2"
+                />
+                <p class="text-xs text-red-500 hidden error-message" id="name-error"></p>
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-gray-700">Email Address <span class="text-red-500">*</span></label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="johndoe@example.com"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  required
+                />
+                <p class="text-xs text-red-500 hidden error-message" id="email-error"></p>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  placeholder="(123) 456-7890"
+                  pattern="^(\+1|1)?[-.\s]?\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  title="Please enter a valid US phone number (e.g. (123) 456-7890 or 123-456-7890)"
+                />
+                
+                <p class="text-xs text-red-500 hidden error-message" id="phone-error"></p>
+              </div>
+              <div class="space-y-2">
+                <label for="service" class="text-sm font-medium text-gray-700">Service Required <span class="text-red-500">*</span></label>
+                <select 
+                  id="service" 
+                  name="service"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  required
+                >
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="adu">ADU Design</option>
+                  <option value="structural">Structural Design</option>
+                  <option value="renovation">Home Renovation</option>
+                  <option value="reinforcement">Home Reinforcement</option>
+                  <option value="inspection">Structural Inspection</option>
+                  <option value="fire">Fire Damage Repair</option>
+                  <option value="retaining">Retaining Wall Design</option>
+                  <option value="commercial">Commercial Space Design</option>
+                </select>
+                <p class="text-xs text-red-500 hidden error-message" id="service-error"></p>
+              </div>
+            </div>
+            
+            <div class="space-y-2">
+              <label for="address" class="text-sm font-medium text-gray-700">Address</label>
+              <input 
+                type="text" 
+                id="address" 
+                name="address" 
+                placeholder="123 Main St, San Jose"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+              />
+              
+              <p class="text-xs text-red-500 hidden error-message" id="address-error"></p>
+            </div>
+            
+            <div class="space-y-2">
+              <label for="message" class="text-sm font-medium text-gray-700">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                placeholder="Tell us about your project..."
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition resize-none"
+              ></textarea>
+              <p class="text-xs text-red-500 hidden error-message" id="message-error"></p>
+            </div>
+            
+            <div class="pt-2">
+              <button 
+                type="submit"
+                class="w-full px-6 py-4 bg-secondary text-white font-medium rounded-lg shadow-md hover:bg-primary transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+                id="submitButton"
+              >
+                Send Message
+              </button>
+              <p class="text-xs text-red-500 hidden mt-2" id="form-error"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 客户端表单验证
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm') as HTMLFormElement;
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          // 重置错误信息
+          const errorElements = document.querySelectorAll('.error-message');
+          errorElements.forEach(el => el.classList.add('hidden'));
+          
+          // 收集表单数据
+          const formData = new FormData(contactForm);
+          
+          // 客户端验证
+          let isValid = true;
+          
+          // 验证加州地址
+          const address = formData.get('address');
+          if (address && typeof address === 'string' && address.trim() !== '') {
+            const californiaKeywords = ['CA', 'California', 'calif', 'ca', 'california'];
+            const isCaliforniaAddress = californiaKeywords.some(keyword => 
+              address.toLowerCase().includes(keyword.toLowerCase())
+            );
+            
+            if (!isCaliforniaAddress) {
+              const addressError = document.getElementById('address-error');
+              if (addressError) {
+                addressError.textContent = 'Address must be in California';
+                addressError.classList.remove('hidden');
+              }
+              isValid = false;
+            }
+          }
+          
+          // 验证电话号码
+          const phone = formData.get('phone');
+          if (phone && typeof phone === 'string' && phone.trim() !== '') {
+            const phoneRegex = /^(\+1|1)?[-.\s]?\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/;
+            if (!phoneRegex.test(phone)) {
+              const phoneError = document.getElementById('phone-error');
+              if (phoneError) {
+                phoneError.textContent = 'Please enter a valid US phone number';
+                phoneError.classList.remove('hidden');
+              }
+              isValid = false;
+            }
+          }
+          
+          if (isValid) {
+            try {
+              // 禁用提交按钮防止重复提交
+              const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+              if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+              }
+              
+              // 提交表单
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: formData
+              });
+              
+              if (response.redirected) {
+                // 成功并重定向
+                window.location.href = response.url;
+              } else {
+                // 处理API错误
+                const data = await response.json();
+                
+                if (data.errors) {
+                  // 显示特定字段错误
+                  Object.entries(data.errors).forEach(([field, errorInfo]) => {
+                    if (field !== '_errors') {
+                      const errorElement = document.getElementById(`${field}-error`);
+                      const errorData = errorInfo as { _errors?: string[] };
+                      if (errorElement && errorData._errors && errorData._errors.length) {
+                        errorElement.textContent = errorData._errors[0];
+                        errorElement.classList.remove('hidden');
+                      }
+                    }
+                  });
+                } else {
+                  // 显示一般错误
+                  const formError = document.getElementById('form-error');
+                  if (formError) {
+                    formError.textContent = data.message || 'There was an error submitting the form. Please try again.';
+                    formError.classList.remove('hidden');
+                  }
+                }
+                
+                // 重新启用提交按钮
+                if (submitButton) {
+                  submitButton.disabled = false;
+                  submitButton.textContent = 'Send Message';
+                }
+              }
+            } catch (error) {
+              console.error('Error submitting form:', error);
+              
+              // 显示一般错误
+              const formError = document.getElementById('form-error');
+              if (formError) {
+                formError.textContent = 'There was an error submitting the form. Please try again.';
+                formError.classList.remove('hidden');
+              }
+              
+              // 重新启用提交按钮
+              const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+              if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</section> 

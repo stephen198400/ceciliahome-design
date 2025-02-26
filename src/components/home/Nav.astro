@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logoImage from '../../assets/logo.png';
+import phoneImage from '../../assets/svg/phone.svg';
 const SITE_URL = "https://www.ceciliahome.net";
 ---
 <!-- <div class="text-center py-2 bg-primary">
@@ -27,9 +28,9 @@ const SITE_URL = "https://www.ceciliahome.net";
     </div>
 
     {/* CTA按钮部分 */}
-    <div class="hidden  bg-secondary md:flex items-center gap-2 text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
+    <div class="hidden ring-2 ring-secondary text-secondary md:flex items-center gap-2  px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
       <a href="tel:+15108492222" class="flex items-center gap-2">Let's Talk
-        <img src="/src/assets/svg/phone.svg" alt="Phone" class="w-3 h-3 text-white">
+        <Image src={phoneImage} alt="Phone" class="w-3 h-3 text-white">
       </a>
       
     </div>
