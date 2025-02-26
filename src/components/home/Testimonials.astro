@@ -66,11 +66,149 @@ function renderStars(rating: number) {
   )).join('');
 }
 
-// 为了确保滚动的连续性，我们需要更多重复
-const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials]; // 15张卡片
+// 为了确保滚动的连续性，我们需要复制testimonials
+const duplicatedTestimonials = [...testimonials, ...testimonials]; // 复制一遍保证无缝滚动
+
+// 定义CSS样式（也可放在.css文件中引入）
+const styles = `
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .testimonial-scroll {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 左右渐变消失效果 */
+  .testimonial-scroll::before,
+  .testimonial-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 15%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .testimonial-scroll::before {
+    left: 0;
+    background: linear-gradient(to right, rgb(249 250 251), rgba(249, 250, 251, 0));
+  }
+  
+  .testimonial-scroll::after {
+    right: 0;
+    background: linear-gradient(to left, rgb(249 250 251), rgba(249, 250, 251, 0));
+  }
+
+  .testimonial-scroll-content {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    will-change: transform;
+    position: relative;
+  }
+  
+  .testimonial-scroll-top .testimonial-scroll-content {
+    animation: scrollLeft 60s linear infinite;
+  }
+  
+  .testimonial-scroll-bottom .testimonial-scroll-content {
+    animation: scrollRight 45s linear infinite;
+  }
+
+  .testimonial-scroll:hover .testimonial-scroll-content {
+    animation-play-state: paused;
+  }
+  
+  .testimonial-card {
+    flex-shrink: 0;
+    width: 300px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  
+  /* 添加悬停效果 */
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 小屏幕样式 */
+  @media (max-width: 768px) {
+    .testimonial-scroll-content {
+      animation: scrollLeft 40s linear infinite;
+    }
+    
+    .testimonial-card {
+      width: 85vw;
+      max-width: 300px;
+      padding: 1rem;
+    }
+    
+    .testimonial-card img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    /* 移动端渐变宽度调整 */
+    .testimonial-scroll::before,
+    .testimonial-scroll::after {
+      width: 20%;
+    }
+  }
+  
+  /* 大屏幕样式 */
+  @media (min-width: 1024px) {
+    .testimonial-card {
+      width: 380px;
+      padding: 1.75rem;
+    }
+    
+    .testimonial-card img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    
+    .testimonial-scroll-content {
+      gap: 2rem;
+    }
+    
+    /* 大屏幕渐变宽度调整 */
+    .testimonial-scroll::before,
+    .testimonial-scroll::after {
+      width: 10%;
+    }
+  }
+  
+  /* 超大屏幕样式 */
+  @media (min-width: 1536px) {
+    .testimonial-card {
+      width: 420px;
+      padding: 2rem;
+    }
+  }
+`;
 ---
 
 <section class="py-16 bg-gray-50 overflow-hidden">
+  <style set:html={styles}></style>
+  
   <div>
     <div class="text-center mb-12 px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -81,61 +219,12 @@ const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonial
       </p>
     </div>
 
-    {/* 桌面端静态展示 */}
-    <div class="hidden sm:block">
-      <div class="max-w-7xl mx-auto px-4">
-        {/* 第一行 */}
-        <div class="grid grid-cols-4 gap-6 mb-6">
-          {testimonials.slice(0, 4).map(testimonial => (
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  class="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
-                  <p class="text-sm text-gray-500">{testimonial.platform}</p>
-                </div>
-              </div>
-              <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
-              <p class="text-gray-600 leading-relaxed line-clamp-3">
-                {testimonial.content}
-              </p>
-            </div>
-          ))}
-        </div>
-        {/* 第二行 */}
-        <div class="grid grid-cols-4 gap-6">
-          {testimonials.slice(4, 8).map(testimonial => (
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  class="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
-                  <p class="text-sm text-gray-500">{testimonial.platform}</p>
-                </div>
-              </div>
-              <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
-              <p class="text-gray-600 leading-relaxed line-clamp-3">
-                {testimonial.content}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    {/* 移动端垂直展示 */}
-    <div class="block sm:hidden px-4">
-      <div class="space-y-4">
-        {testimonials.slice(0, 3).map(testimonial => (
-          <div class="bg-white rounded-xl p-6 shadow-sm">
+    {/* 上排滚动 - 在所有屏幕上显示 */}
+    <div class="testimonial-scroll py-4 testimonial-scroll-top max-w-[95vw] mx-auto mb-8">
+      <div class="testimonial-scroll-content">
+        {/* 第一组评价 */}
+        {testimonials.map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
             <div class="flex items-center gap-4 mb-4">
               <img 
                 src={testimonial.image} 
@@ -148,21 +237,79 @@ const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonial
               </div>
             </div>
             <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
-            <p class="text-gray-600 leading-relaxed">
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
               {testimonial.content}
             </p>
           </div>
         ))}
         
-        {/* 查看更多按钮 */}
-        <div class="text-center mt-8">
-          <button class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            <span>View More Reviews</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </button>
-        </div>
+        {/* 复制一组评价用于无缝滚动 */}
+        {testimonials.map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.name}
+                class="w-12 h-12 rounded-full object-cover"
+              />
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    {/* 下排滚动 - 仅在中等及以上屏幕显示 */}
+    <div class="testimonial-scroll  py-4 testimonial-scroll-bottom max-w-[95vw] mx-auto hidden md:block">
+      <div class="testimonial-scroll-content">
+        {/* 第二组评价 - 反向顺序以增加视觉差异 */}
+        {[...testimonials].reverse().map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.name}
+                class="w-12 h-12 rounded-full object-cover"
+              />
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
+        
+        {/* 复制一组反向评价用于无缝滚动 */}
+        {[...testimonials].reverse().map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.name}
+                class="w-12 h-12 rounded-full object-cover"
+              />
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </div>
