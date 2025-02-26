@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import placeholder from '../../assets/articles/placeholder.jpg';
+
+const features = [
+  {
+    title: "Planning",
+    icon: "planning",
+    description: "At Cecilia Home, our planning process is the foundation of every successful project. We begin by listening closely to our clients, understanding their vision, goals, and requirements."
+  },
+  {
+    title: "Development",
+    icon: "development",
+    description: "In the development process at Cecilia Home, we bring plans to life with a focus on quality and efficiency. Our skilled team ensures that every detail aligns with our clients' vision."
+  },
+  {
+    title: "Construction",
+    icon: "construction",
+    description: "The construction process at Cecilia Home is where vision meets execution. Our dedicated team work in detailed plans into tangible ensuring every phase is executed with precision and care."
+  },
+  {
+    title: "Handover",
+    icon: "handover",
+    description: "At Cecilia Home, the handover process marks the culmination of our commitment to quality and client satisfaction. Once construction is complete, we conduct a thorough walkthrough with our clients."
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <!-- Header Section: Title at the top, left-aligned -->
+    <div class="mb-12">
+      <span class="px-6 py-2 rounded-full text-sm font-medium mb-6 inline-block">
+        How We Work?
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Built on Precision, Driven by Excellence
+      </h2>
+    </div>
+    
+    <!-- Content Section: Image on the left, cards on the right -->
+    <div class="flex flex-col lg:flex-row gap-16">
+      <!-- Left Side: Image -->
+      <div class="w-full h-full  lg:w-2/5">
+        <div class="rounded-lg overflow-hidden mb-6">
+          <Image 
+            src={placeholder} 
+            alt="Cecilia Home Design Process"
+            class="w-full h-full object-cover"
+            width={600}
+            height={400}
+          />
+        </div>
+        
+      </div>
+      
+      <!-- Right Side: Feature Cards in 2x2 Grid -->
+      <div class="w-full lg:w-3/5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((feature) => (
+            <div class="bg-white p-6 border border-blue-600 rounded-lg flex flex-col h-full">
+              <div class="flex justify-center mb-5">
+                {feature.icon === "planning" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )}
+                {feature.icon === "development" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )}
+                {feature.icon === "construction" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  </svg>
+                )}
+                {feature.icon === "handover" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-xl font-bold text-center mb-4">{feature.title}</h3>
+              <p class="text-gray-600 text-center">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

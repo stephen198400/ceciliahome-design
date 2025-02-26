@@ -1,14 +1,15 @@
 ---
 import CtaSection from '../components/home/CtaSection.astro';
+import FeaturesSection from '../components/home/FeaturesSection.astro';
 import Hero from '../components/home/Hero.astro';
+import LatestArticlesSection from '../components/home/LatestArticlesSection.astro';
 import Nav from '../components/home/Nav.astro';
 import Services from '../components/home/Services.astro';
+import StatsSection from '../components/home/StatsSection.astro';
 import Testimonials from '../components/home/Testimonials.astro';
-import WhyChooseUs from '../components/home/WhyChooseUs.astro';
 import Layout from '../layouts/Layout.astro';
 
-// A/B 测试：随机决定显示哪个 Hero 组件
-const showVariantB = Math.random() > 0.5; // 50% 的概率显示 Hero-1
+
 ---
 
 <Layout
@@ -18,13 +19,13 @@ const showVariantB = Math.random() > 0.5; // 50% 的概率显示 Hero-1
   type="organization"
 >
 	<Nav />
-  <main class="">
-    {/* 根据随机结果显示不同的 Hero 组件 */}
-  <Hero/> 
-
-    <WhyChooseUs />
+  <main>
+    <Hero />
+    <StatsSection />
+    <FeaturesSection />
     <Services />
     <Testimonials />
+    <LatestArticlesSection />
     <CtaSection />
   </main>
 </Layout>

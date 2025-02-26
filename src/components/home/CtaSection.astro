@@ -5,10 +5,10 @@
       <div class="w-full lg:w-1/2">
         <div class="max-w-xl">
           <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Transform your space today!
+            Talk to our experts and get a free consultation！
           </h2>
           <p class="text-white/80 text-lg sm:text-xl mb-8">
-            Get in touch with our professional design team. We'll transform your ideas into reality with our expert structural design services.
+            Need help with your architectural or structural project? Our team of licensed professionals has designed 200+ successful projects throughout California. Contact us today for a free quote.
           </p>
           <ul class="space-y-4 md:block hidden text-white/90">
             <li class="flex items-start gap-2">
@@ -66,7 +66,7 @@
               </div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:gap-5 gap-1">
               <div class="space-y-2">
                 <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
                 <input 
@@ -83,22 +83,29 @@
               </div>
               <div class="space-y-2">
                 <label for="service" class="text-sm font-medium text-gray-700">Service Required <span class="text-red-500">*</span></label>
-                <select 
-                  id="service" 
-                  name="service"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
-                  required
-                >
-                  <option value="" disabled selected>Select a service</option>
-                  <option value="adu">ADU Design</option>
-                  <option value="structural">Structural Design</option>
-                  <option value="renovation">Home Renovation</option>
-                  <option value="reinforcement">Home Reinforcement</option>
-                  <option value="inspection">Structural Inspection</option>
-                  <option value="fire">Fire Damage Repair</option>
-                  <option value="retaining">Retaining Wall Design</option>
-                  <option value="commercial">Commercial Space Design</option>
-                </select>
+                <div class="relative">
+                  <select 
+                    id="service" 
+                    name="service"
+                    class="w-full appearance-none px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition bg-white pr-10"
+                    required
+                  >
+                    <option value="" disabled selected>Choose a service</option>
+                    <option value="adu">ADU Design</option>
+                    <option value="structural">Structural Design</option>
+                    <option value="renovation">Home Renovation</option>
+                    <option value="reinforcement">Home Reinforcement</option>
+                    <option value="inspection">Structural Inspection</option>
+                    <option value="fire">Fire Damage Repair</option>
+                    <option value="retaining">Retaining Wall Design</option>
+                    <option value="commercial">Commercial Space Design</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
                 <p class="text-xs text-red-500 hidden error-message" id="service-error"></p>
               </div>
             </div>
