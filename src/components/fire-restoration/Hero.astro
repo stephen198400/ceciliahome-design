@@ -1,0 +1,183 @@
+---
+import { Image } from 'astro:assets';
+import medal from '../../assets//medal.png';
+import heroImage from '../../assets/adus/hero.jpg';
+import thumbtackLogo from '../../assets/thumbtack-logo.png';
+import beforeImage from '../../assets/fire-restoration/fire-damage-house-before.webp';
+import afterImage from '../../assets/fire-restoration/fire-damage-house-after.webp';
+---
+
+<section class="min-h-[66.67vh] flex items-center overflow-hidden bg-gray-100">
+  <div class="container mx-auto px-4 py-8 sm:py-16 lg:py-24">
+    <div class="flex flex-col md:flex-row items-stretch gap-8 lg:gap-12">
+      <!-- Left Content -->
+      <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left justify-center md:pr-4 lg:pr-8">
+        <p class="text-gray-500 font-semibold text-sm sm:text-base ">
+         Southern California Licensed Engineering & Design
+        </p>
+        <h1 class="text-4xl sm:text-5xl  xl:text-6xl font-bold leading-tight sm:leading-snug lg:leading-tight mt-3 sm:mt-4">
+           Fire-Damage House <span class="text-primary">Recovery & Inspection</span>
+        </h1>
+        <p class="mt-4 sm:mt-6 lg:mt-8 text-base sm:text-lg lg:text-xl text-gray-500 max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl leading-relaxed">
+          Transform your fire-damaged property with our certified structural engineering and architectural recovery services. We handle assessments, permits, plans, and reconstruction while guiding you through the entire recovery process.
+        </p>
+        <div class="mt-6 sm:mt-8 lg:mt-10">
+          <a
+            href="#contactForm"
+            class="inline-block px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-md bg-primary text-white hover:bg-primary/80 transition-all duration-300 text-base sm:text-lg hover:scale-105 shadow-md scroll-to-center"
+          >
+            Get A Free Consultation
+          </a>
+        </div>
+        <div class="flex items-center gap-4 mt-6">
+          <div class="flex  gap-2">
+          <div class="flex flex-col gap-1">
+            <div class="">
+              <Image src={thumbtackLogo} alt="Thumbtack Logo" class="h-12 w-auto" />
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-1">
+          <Image src={medal} alt="Google Logo" class="h-6 w-auto" />
+          <p class="text-xl font-bold text-yellow-500">TOP 1</p>
+        </div>
+        </div>
+      </div>
+
+      <!-- Right Image - Now with Before-After Comparison -->
+      <div class="w-full md:w-1/2 flex items-center justify-center">
+        <div class="relative w-full h-0 pb-[75%] overflow-hidden rounded-xl" id="hero-comparison-slider">
+          <!-- 后图片 (After) -->
+          <div 
+            class="absolute inset-0 w-full h-full rounded-xl overflow-hidden"
+          >
+            <Image 
+              src={afterImage} 
+              alt="Fire damage house after restoration" 
+              class="w-full h-full object-cover"
+              width={800}
+              height={600}
+            />
+          </div>
+          
+          <!-- 前图片 (Before) -->
+          <div 
+            class="before-image absolute inset-0 w-full h-full rounded-xl overflow-hidden"
+            style="clip-path: inset(0 50% 0 0);"
+          >
+            <Image 
+              src={beforeImage} 
+              alt="Fire damage house before restoration" 
+              class="w-full h-full object-cover"
+              width={800}
+              height={600}
+            />
+          </div>
+          
+          <!-- 滑块控制器 -->
+          <div 
+            class="slider-handle absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-30"
+            style="left: 50%; transform: translateX(-50%);"
+          >
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center">
+              <div class="flex items-center justify-between w-6">
+                <svg class="w-2 h-2 text-gray-500" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                <svg class="w-2 h-2 text-gray-500" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 初始化滑块
+    initializeComparisonSlider('hero-comparison-slider');
+    
+    // 滑块初始化函数
+    function initializeComparisonSlider(sliderId: string) {
+      const container = document.getElementById(sliderId);
+      if (!container) return;
+
+      const beforeImage = container.querySelector('.before-image') as HTMLElement | null;
+      const sliderHandle = container.querySelector('.slider-handle') as HTMLElement | null;
+      
+      if (!beforeImage || !sliderHandle) return;
+      
+      let isDragging = false;
+
+      // 处理滑块拖动
+      const handleMouseDown = (e: MouseEvent) => {
+        e.preventDefault();
+        isDragging = true;
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+      };
+
+      const handleTouchStart = (e: TouchEvent) => {
+        isDragging = true;
+        document.addEventListener('touchmove', handleTouchMove);
+        document.addEventListener('touchend', handleTouchEnd);
+      };
+
+      const calculateSliderPosition = (clientX: number) => {
+        const containerRect = container.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+        const offsetX = clientX - containerRect.left;
+        
+        // 计算滑块位置（百分比）
+        let newPosition = (offsetX / containerWidth) * 100;
+        
+        // 限制滑块位置在0-100范围内
+        newPosition = Math.max(0, Math.min(100, newPosition));
+        
+        // 设置滑块位置和裁剪区域
+        sliderHandle.style.left = `${newPosition}%`;
+        beforeImage.style.clipPath = `inset(0 ${100 - newPosition}% 0 0)`;
+      };
+
+      // 使用requestAnimationFrame优化视觉更新
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!isDragging) return;
+        
+        // 保存当前位置
+        const clientX = e.clientX;
+        
+        requestAnimationFrame(() => {
+          calculateSliderPosition(clientX);
+        });
+      };
+
+      const handleTouchMove = (e: TouchEvent) => {
+        if (!isDragging || !e.touches[0]) return;
+        calculateSliderPosition(e.touches[0].clientX);
+      };
+
+      const handleMouseUp = () => {
+        isDragging = false;
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+
+      const handleTouchEnd = () => {
+        isDragging = false;
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
+      };
+
+      // 添加事件监听器
+      sliderHandle.addEventListener('mousedown', handleMouseDown);
+      sliderHandle.addEventListener('touchstart', handleTouchStart, { passive: true });
+    }
+  });
+</script> 
+

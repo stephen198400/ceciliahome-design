@@ -1,0 +1,396 @@
+---
+// 导入 Astro Image 组件
+import { Image } from 'astro:assets';
+
+// 导入所有评价图片
+import amandaImage from '../../assets/home/Testimonials/amanda-thompson.png';
+import davidImage from '../../assets/home/Testimonials/david-wong.png';
+import jenniferImage from '../../assets/home/Testimonials/jennifer-martinez.png';
+import kevinImage from '../../assets/home/Testimonials/kevin-patel.png';
+import lisaImage from '../../assets/home/Testimonials/lisa-garcia.png';
+import michaelImage from '../../assets/home/Testimonials/michael-zhang.png';
+import robertImage from '../../assets/home/Testimonials/robert-chen.png';
+import sarahImage from '../../assets/home/Testimonials/sarah-miller.png';
+
+// 评价接口定义
+interface Testimonial {
+  name: string;
+  platform: string;
+  content: string;
+  rating: number;
+  image: ImageMetadata;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Jennifer Martinez",
+    platform: "Houzz",
+    content: "Mason and his team at Cecilia Home designed our detached garage ADU perfectly. The attention to detail in the structural design and their knowledge of California ADU regulations made the permit process incredibly smooth. We're thrilled with our new living space!",
+    rating: 5,
+    image: jenniferImage
+  },
+  {
+    name: "Robert Chen",
+    platform: "Google Reviews",
+    content: "Cecilia Home transformed our attached garage into a beautiful ADU for our parents. Mason understood our multi-generational living needs and designed a space that feels private yet connected to our main house. Their expertise in ADU conversions really shows.",
+    rating: 4.8,
+    image: robertImage
+  },
+  {
+    name: "Amanda Thompson",
+    platform: "HomeAdvisor",
+    content: "After researching many ADU designers, we chose Cecilia Home and couldn't be happier. Mason guided us through every step of creating our backyard ADU, from initial concept to final permit approval. The design maximizes our small lot perfectly.",
+    rating: 5,
+    image: amandaImage
+  },
+  {
+    name: "David Wong",
+    platform: "Thumbtack",
+    content: "Working with Cecilia Home on our JADU conversion was exceptional. They designed a compact yet spacious-feeling 500 sq ft unit within our existing home. Mason's team was always responsive and their knowledge of JADU regulations saved us from potential permit issues.",
+    rating: 4.7,
+    image: davidImage
+  },
+  {
+    name: "Lisa Garcia",
+    platform: "Facebook",
+    content: "Our new detached ADU designed by Cecilia Home has become the highlight of our property. Mason personally came to assess our yard and provided detailed plans that maximized space while meeting all code requirements. Their 3D renderings helped us visualize the final result.",
+    rating: 4.9,
+    image: lisaImage
+  },
+  {
+    name: "Michael Zhang",
+    platform: "Google Reviews",
+    content: "I needed a complex ADU that would work on our sloped property. Cecilia Home not only provided excellent technical solutions but also designed a beautiful structure that blends with our main house. Their expertise in challenging ADU sites is unmatched.",
+    rating: 5,
+    image: michaelImage
+  },
+  {
+    name: "Kevin Patel",
+    platform: "Houzz",
+    content: "Cecilia Home designed our basement conversion ADU with incredible attention to detail. Mason's team found creative solutions for natural lighting and ventilation that transformed an overlooked space into a rental unit that's generating great income for us.",
+    rating: 4.5,
+    image: kevinImage
+  },
+  {
+    name: "Sarah Miller",
+    platform: "Yelp",
+    content: "We needed to add an ADU quickly for my mother-in-law, and Cecilia Home expedited the entire process. Their pre-approved ADU designs saved us weeks of waiting, and Mason's team handled all the permitting. From design to approval in just 3 weeks - incredible!",
+    rating: 4.9,
+    image: sarahImage
+  },
+  // 额外添加的5个虚拟评论
+  {
+    name: "James Wilson",
+    platform: "HomeAdvisor",
+    content: "Our ADU project had unique requirements due to our historic neighborhood. Cecilia Home designed an ADU that respected the architectural style of our main house while providing modern amenities inside. Mason's knowledge of local ADU restrictions was invaluable.",
+    rating: 4.7,
+    image: davidImage // 复用现有图像
+  },
+  {
+    name: "Emily Johnson",
+    platform: "Google Reviews",
+    content: "After an earthquake damaged our garage, we decided to rebuild it as an ADU. Cecilia Home designed a seismically sound structure that's now a beautiful rental unit. Mason personally oversaw the structural aspects, ensuring our new ADU exceeded safety standards.",
+    rating: 5,
+    image: sarahImage // 复用现有图像
+  },
+  {
+    name: "Daniel Lee",
+    platform: "Yelp",
+    content: "Our hillside ADU project seemed impossible until we found Cecilia Home. Their engineering team developed innovative foundation solutions that made our dream ADU possible. Mason's team created 3D models that helped us visualize the final result before construction.",
+    rating: 4.8,
+    image: michaelImage // 复用现有图像
+  },
+  {
+    name: "Sophia Rodriguez",
+    platform: "Houzz",
+    content: "We worked with Cecilia Home to design a two-story ADU that maximizes our limited backyard space. Their knowledge of vertical ADU designs and local height restrictions was impressive. Mason guided us through every step, and our ADU now generates significant rental income.",
+    rating: 4.9,
+    image: jenniferImage // 复用现有图像
+  },
+  {
+    name: "Thomas Clark",
+    platform: "Thumbtack",
+    content: "Cecilia Home designed an accessible ADU for my elderly parents that incorporated all the age-in-place features we needed. Mason listened carefully to our requirements and delivered a design that's both beautiful and practical. Their attention to accessibility details was exceptional.",
+    rating: 4.6,
+    image: robertImage // 复用现有图像
+  }
+];
+
+function renderStars(rating: number) {
+  return Array.from({ length: 5 }).map((_, i) => (
+    i < rating ? 
+      '<svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>' :
+      '<svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>'
+  )).join('');
+}
+
+// 为了确保滚动的连续性，我们需要复制testimonials
+const duplicatedTestimonials = [...testimonials, ...testimonials]; // 复制一遍保证无缝滚动
+
+// 定义CSS样式（也可放在.css文件中引入）
+const styles = `
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .testimonial-scroll {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 左右渐变消失效果 */
+  .testimonial-scroll::before,
+  .testimonial-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 15%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .testimonial-scroll::before {
+    left: 0;
+    background: linear-gradient(to right, rgb(249 250 251), rgba(249, 250, 251, 0));
+  }
+  
+  .testimonial-scroll::after {
+    right: 0;
+    background: linear-gradient(to left, rgb(249 250 251), rgba(249, 250, 251, 0));
+  }
+
+  .testimonial-scroll-content {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    will-change: transform;
+    position: relative;
+  }
+  
+  .testimonial-scroll-top .testimonial-scroll-content {
+    animation: scrollLeft 60s linear infinite;
+  }
+  
+  .testimonial-scroll-bottom .testimonial-scroll-content {
+    animation: scrollRight 45s linear infinite;
+  }
+
+  .testimonial-scroll:hover .testimonial-scroll-content {
+    animation-play-state: paused;
+  }
+  
+  .testimonial-card {
+    flex-shrink: 0;
+    width: 300px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  
+  /* 添加悬停效果 */
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 小屏幕样式 */
+  @media (max-width: 768px) {
+    .testimonial-scroll-content {
+      animation: scrollLeft 40s linear infinite;
+    }
+    
+    .testimonial-card {
+      width: 85vw;
+      max-width: 300px;
+      padding: 1rem;
+    }
+    
+    .testimonial-card img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    /* 移动端渐变宽度调整 */
+    .testimonial-scroll::before,
+    .testimonial-scroll::after {
+      width: 20%;
+    }
+  }
+  
+  /* 大屏幕样式 */
+  @media (min-width: 1024px) {
+    .testimonial-card {
+      width: 380px;
+      padding: 1.75rem;
+    }
+    
+    .testimonial-card img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    
+    .testimonial-scroll-content {
+      gap: 2rem;
+    }
+    
+    /* 大屏幕渐变宽度调整 */
+    .testimonial-scroll::before,
+    .testimonial-scroll::after {
+      width: 10%;
+    }
+  }
+  
+  /* 超大屏幕样式 */
+  @media (min-width: 1536px) {
+    .testimonial-card {
+      width: 420px;
+      padding: 2rem;
+    }
+  }
+`;
+---
+
+<section class="py-16  overflow-hidden">
+  <style set:html={styles}></style>
+  
+  <div>
+    <div class="text-center mb-12 px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        What Our Clients Say
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with us.
+      </p>
+    </div>
+
+    {/* 上排滚动 - 在所有屏幕上显示 */}
+    <div class="testimonial-scroll py-4 testimonial-scroll-top max-w-[95vw] mx-auto mb-8">
+      <div class="testimonial-scroll-content">
+        {/* 第一组评价 */}
+        {testimonials.map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image 
+                  src={testimonial.image} 
+                  alt={`${testimonial.name} profile`}
+                  class="w-full h-full object-cover"
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
+        
+        {/* 复制一组评价用于无缝滚动 */}
+        {testimonials.map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image 
+                  src={testimonial.image} 
+                  alt={`${testimonial.name} profile`}
+                  class="w-full h-full object-cover"
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    {/* 下排滚动 - 仅在中等及以上屏幕显示 */}
+    <div class="testimonial-scroll  py-4 testimonial-scroll-bottom max-w-[95vw] mx-auto hidden md:block">
+      <div class="testimonial-scroll-content">
+        {/* 第二组评价 - 反向顺序以增加视觉差异 */}
+        {[...testimonials].reverse().map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image 
+                  src={testimonial.image} 
+                  alt={`${testimonial.name} profile`}
+                  class="w-full h-full object-cover"
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
+        
+        {/* 复制一组反向评价用于无缝滚动 */}
+        {[...testimonials].reverse().map(testimonial => (
+          <div class="testimonial-card bg-white rounded-xl p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image 
+                  src={testimonial.image} 
+                  alt={`${testimonial.name} profile`}
+                  class="w-full h-full object-cover"
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p class="text-sm text-gray-500">{testimonial.platform}</p>
+              </div>
+            </div>
+            <div class="flex mb-4" set:html={renderStars(testimonial.rating)} />
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-4 sm:line-clamp-3">
+              {testimonial.content}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
