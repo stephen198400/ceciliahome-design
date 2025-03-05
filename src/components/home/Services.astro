@@ -5,6 +5,7 @@ import aduDesignImage from '../../assets/services/adu-design.jpg';
 import buildingInspectionImage from '../../assets/services/building-inspection.jpg';
 import commercialDesignImage from '../../assets/services/commercial-design.jpg';
 import homeRenovationImage from '../../assets/services/home-renovation.jpg';
+import houseIcon from '../../assets/services/icons/house-icon.png';
 import seismicRetrofittingImage from '../../assets/services/seismic-retrofitting.jpg';
 import structuralEngineeringImage from '../../assets/services/structural-engineering.jpg';
 
@@ -13,7 +14,6 @@ interface Service {
   slug: string;
   question: string;
   description: string;
-  svg: string;
   image: ImageMetadata;
 }
 
@@ -23,9 +23,6 @@ const services: Service[] = [
     slug: "/services/adu-design",
     question: "Looking to maximize your property value with an ADU but don't know where to start?",
     description: "Expert ADU design services from concept to permits. Maximize property value with legal additional living space.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-    </svg>`,
     image: aduDesignImage
   },
   {
@@ -33,9 +30,6 @@ const services: Service[] = [
     slug: "/services/structural-engineering",
     question: "Need professional structural engineering to ensure your building's safety and compliance?",
     description: "Complete structural design and analysis for new construction, renovations, and seismic retrofitting. California code compliant.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-    </svg>`,
     image: structuralEngineeringImage
   },
   {
@@ -43,9 +37,6 @@ const services: Service[] = [
     slug: "/services/home-renovation",
     question: "Want to upgrade your home but concerned about construction quality and permits?",
     description: "Professional design for kitchen, bathroom, and whole-house renovations. Complete construction drawings for project success.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-    </svg>`,
     image: homeRenovationImage
   },
   {
@@ -53,9 +44,6 @@ const services: Service[] = [
     slug: "/services/seismic-retrofitting",
     question: "Worried about your building's earthquake safety?",
     description: "Advanced seismic evaluation and retrofitting using latest earthquake-resistant technologies. Enhanced structural integrity guaranteed.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-    </svg>`,
     image: seismicRetrofittingImage
   },
   {
@@ -63,9 +51,6 @@ const services: Service[] = [
     slug: "/services/building-inspection",
     question: "Dealing with building damage or code violations?",
     description: "Comprehensive structural safety and damage assessments. Expert solutions for building concerns and code compliance.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-    </svg>`,
     image: buildingInspectionImage
   },
   {
@@ -73,9 +58,6 @@ const services: Service[] = [
     slug: "/services/commercial-design",
     question: "Need professional commercial space design to elevate your business?",
     description: "Specialized design for restaurants, retail spaces, and commercial properties. Aesthetic appeal with regulatory compliance.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-    </svg>`,
     image: commercialDesignImage
   },
   {
@@ -83,9 +65,6 @@ const services: Service[] = [
     slug: "/services/retaining-wall",
     question: "",
     description: "Expert retaining wall design for slope stability and landscape architecture. Safety meets aesthetics.",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-    </svg>`,
     image: structuralEngineeringImage
   }
 ];
@@ -94,7 +73,9 @@ const services: Service[] = [
 <section class="py-20 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
-      <span class="text-blue-600 font-medium mb-4 block">Professional Services</span>
+      <span class="text-primary bg-primary/10 px-4 py-2 rounded-full inline-block text-sm font-medium mb-6 ">
+        PROFESSIONAL SERVICES
+      </span>
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Expert Design & Engineering Solutions</h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
         We provide comprehensive architectural design and structural engineering services, delivering customized solutions for all your building needs.
@@ -119,8 +100,14 @@ const services: Service[] = [
           {/* 下方内容 */}
           <div class="p-6 flex flex-col flex-grow">
             <div class="flex items-center gap-3 mb-3">
-              <div class="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-shrink-0">
-                <Fragment set:html={service.svg} />
+              <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+                <Image 
+                  src={houseIcon} 
+                  alt="House Icon"
+                  width={24}
+                  height={24}
+                  class="w-6 h-6"
+                />
               </div>
               <h3 class="text-xl font-bold text-gray-900">
                 <a href={service.slug} class="hover:text-blue-600 transition-colors duration-300">
@@ -132,7 +119,7 @@ const services: Service[] = [
             
             {/* 底部箭头链接 */}
             <div class="mt-auto">
-              <a href={service.slug} class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">
+              <a href={service.slug} class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
                 Learn More
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -147,12 +134,10 @@ const services: Service[] = [
     <div class="text-center">
       <a
         href="/services"
-        class="inline-flex items-center justify-center px-8 py-3  text-base font-medium rounded-md text-white  bg-secondary hover:bg-primary transition-colors duration-300"
+        class="inline-block px-6 sm:px-8  py-3  rounded-md bg-primary text-white hover:bg-primary/80 transition-all duration-300 text-base sm:text-lg hover:scale-105 shadow-md"
       >
         Learn More About Our Services
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
+        
       </a>
     </div>
   </div>

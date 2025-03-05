@@ -1,0 +1,151 @@
+<section class="py-16 lg:py-24 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Before & After Transformations</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        See the remarkable difference our design and renovation services can make.
+        Slide to compare before and after results of our completed projects.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="flex flex-col space-y-4">
+        <div class="image-comparison-container w-full relative overflow-hidden h-96 rounded-lg shadow-md" id="comparison-slider-1">
+          <!-- 后图片 -->
+          <div 
+            class="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+            style="background-image: url('/images/comparison/after.jpg');"
+          ></div>
+          
+          <!-- 前图片 -->
+          <div 
+            class="before-image absolute top-0 left-0 w-full h-full bg-cover bg-center"
+            style="background-image: url('/images/comparison/before.jpg'); clip-path: inset(0 50% 0 0);"
+          ></div>
+          
+          <!-- 滑块控制器 -->
+          <div 
+            class="slider-handle absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-30"
+            style="left: 50%; transform: translateX(-50%);"
+          >
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center">
+              <div class="flex items-center justify-between w-6">
+                <svg class="w-2 h-2 text-gray-500" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                <svg class="w-2 h-2 text-gray-500" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-semibold text-gray-800">Home Renovation & Remodeling</h3>
+          <p class="text-gray-600">Complete transformation of properties with our professional design and construction services</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-12">
+      <a href="/projects" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md shadow-md transition duration-300">
+        View More Projects
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 初始化滑块
+    initializeComparisonSlider('comparison-slider-1');
+    
+    // 滑块初始化函数
+    function initializeComparisonSlider(sliderId: string) {
+      const container = document.getElementById(sliderId);
+      if (!container) return;
+
+      const beforeImage = container.querySelector('.before-image') as HTMLElement | null;
+      const sliderHandle = container.querySelector('.slider-handle') as HTMLElement | null;
+      
+      if (!beforeImage || !sliderHandle) return;
+      
+      let isDragging = false;
+
+      // 处理滑块拖动
+      const handleMouseDown = (e: MouseEvent) => {
+        e.preventDefault();
+        isDragging = true;
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+      };
+
+      const handleTouchStart = (e: TouchEvent) => {
+        isDragging = true;
+        document.addEventListener('touchmove', handleTouchMove);
+        document.addEventListener('touchend', handleTouchEnd);
+      };
+
+      const calculateSliderPosition = (clientX: number) => {
+        const containerRect = container.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+        const offsetX = clientX - containerRect.left;
+        
+        // 计算滑块位置（百分比）
+        let newPosition = (offsetX / containerWidth) * 100;
+        
+        // 限制滑块位置在0-100范围内
+        newPosition = Math.max(0, Math.min(100, newPosition));
+        
+        // 设置滑块位置和裁剪区域
+        sliderHandle.style.left = `${newPosition}%`;
+        beforeImage.style.clipPath = `inset(0 ${100 - newPosition}% 0 0)`;
+      };
+
+      // 添加节流函数来限制处理频率
+      function throttle(callback: (...args: any[]) => void, delay = 16) {
+        let previousCall = 0;
+        return (...args: any[]) => {
+          const now = Date.now();
+          if (now - previousCall >= delay) {
+            previousCall = now;
+            callback(...args);
+          }
+        };
+      }
+
+      // 使用requestAnimationFrame优化视觉更新
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!isDragging) return;
+        
+        // 保存当前位置
+        const clientX = e.clientX;
+        
+        requestAnimationFrame(() => {
+          calculateSliderPosition(clientX);
+        });
+      };
+
+      const handleTouchMove = (e: TouchEvent) => {
+        if (!isDragging || !e.touches[0]) return;
+        calculateSliderPosition(e.touches[0].clientX);
+      };
+
+      const handleMouseUp = () => {
+        isDragging = false;
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+
+      const handleTouchEnd = () => {
+        isDragging = false;
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
+      };
+
+      // 添加事件监听器
+      sliderHandle.addEventListener('mousedown', handleMouseDown);
+      sliderHandle.addEventListener('touchstart', handleTouchStart, { passive: true });
+    }
+  });
+</script> 

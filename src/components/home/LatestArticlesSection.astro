@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-import placeholder from '../../assets/articles/placeholder.jpg';
+import article1 from '../../assets/articles/article-2025-03-02.jpg';
+import article2 from '../../assets/articles/article-2025-03-03.jpg';
+import article3 from '../../assets/articles/article-2025-03-05.jpg';
 ---
 
 <section class="py-16 bg-white">
@@ -15,7 +17,7 @@ import placeholder from '../../assets/articles/placeholder.jpg';
         </p>
       </div>
       <div class="mt-2 hidden lg:flex">
-        <a href="/articles" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-primary transition-all duration-300 ease-in-out">
+        <a href="/articles" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/80 transition-all duration-300 ease-in-out">
           See All Articles
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -29,7 +31,7 @@ import placeholder from '../../assets/articles/placeholder.jpg';
       <div class="bg-gray-50 rounded-lg overflow-hidden">
         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
           <Image 
-            src={placeholder} 
+            src={article1} 
             alt="Exploring different roofing materials"
             class="w-full h-full object-cover"
           />
@@ -50,7 +52,7 @@ import placeholder from '../../assets/articles/placeholder.jpg';
       <div class="bg-gray-50 rounded-lg overflow-hidden">
         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
           <Image 
-            src={placeholder} 
+            src={article2} 
             alt="Protecting your home from damage"
             class="w-full h-full object-cover"
           />
@@ -71,7 +73,7 @@ import placeholder from '../../assets/articles/placeholder.jpg';
       <div class="bg-gray-50 rounded-lg overflow-hidden">
         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
           <Image 
-            src={placeholder} 
+            src={article3} 
             alt="We will make your old roof to new"
             class="w-full h-full object-cover"
           />

@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import constructionIcon from '../../assets/steps/construction.png';
+import contactIcon from '../../assets/steps/contact.png';
+import designIcon from '../../assets/steps/design.png';
+import permitIcon from '../../assets/steps/permit.png';
+import siteVisitIcon from '../../assets/steps/site-visit.png';
+
+const steps = [
+  {
+    number: "1",
+    title: "Free Consultation",
+    description: "Free online expert consultation.",
+    icon: contactIcon
+  },
+  {
+    number: "2",
+    title: "On-Site Assessment",
+    description: "On-site scanning and measurements.",
+    icon: siteVisitIcon
+  },
+  {
+    number: "3",
+    title: "Design Development",
+    description: "Develop detailed design plans.",
+    icon: designIcon
+  },
+  {
+    number: "4",
+    title: "Permit Acquisition",
+    description: "Handle permit application process.",
+    icon: permitIcon
+  },
+  {
+    number: "5",
+    title: "Construction Support",
+    description: "Connect with contractors and guide construction.",
+    icon: constructionIcon
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <span class=" text-primary bg-primary/10 px-4 py-2 rounded-full inline-block text-sm font-medium mb-6 ">
+        WHAT TO EXPECT
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        One-stop Service
+      </h2>
+      <p class="max-w-2xl mx-auto text-gray-600 text-lg">
+        Our streamlined approach makes your building design and construction journey smooth and stress-free.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 relative">
+      {/* 桌面端水平连接线 - 只在图标之间显示 */}
+      <div class="absolute top-12 left-0 right-0 hidden xl:block">
+        <div class="flex justify-between items-center mx-auto" style="width: calc(100% - 240px - 48px); margin-left: calc(120px + 24px); margin-right: calc(120px + 24px);">
+          <div class="w-full border-t-2 border-dashed border-secondary"></div>
+        </div>
+      </div>
+
+      {steps.map((step, index) => (
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="relative mb-6">
+            {/* 主圆圈和图标 */}
+            <div class="w-24 h-24 bg-white border-1 border-gray-200 rounded-full flex items-center justify-center">
+              {step.icon === contactIcon && (
+                <Image src={contactIcon} alt="Contact" class="w-10 h-10" />
+              )}
+              {step.icon === siteVisitIcon && (
+                <Image src={siteVisitIcon} alt="Site Visit" class="w-10 h-10" />
+                
+              )}
+              {step.icon === designIcon && (
+                <Image src={designIcon} alt="Design" class="w-10 h-10" />
+              )}
+              {step.icon === permitIcon && (
+                <Image src={permitIcon} alt="Permit" class="w-10 h-10" />
+              )}
+              {step.icon === constructionIcon && (
+                <Image src={constructionIcon} alt="Construction" class="w-10 h-10" />
+                
+              )}
+            </div>
+            
+            {/* 右上角数字标识 */}
+            <div class="absolute top-1 -right-2 w-8 h-8 rounded-full bg-secondary flex items-center justify-center ">
+              <span class="text-sm font-bold text-white ">{step.number}</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">
+            {step.title}
+          </h3>
+          <p class="text-gray-600 max-w-[200px] mx-auto">{step.description}</p>
+          
+          {/* 移动端垂直虚线连接 */}
+          {index < steps.length - 1 && (
+            <div class="w-px h-16 border-l-2 border-dashed border-primary my-4 xl:hidden"></div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <div class="flex justify-center mt-16">
+      <a href="/book" class="inline-block px-6 sm:px-8 py-3  rounded-md bg-primary text-white hover:bg-primary/80 transition-all duration-300 text-base sm:text-lg hover:scale-105 shadow-md">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section> 

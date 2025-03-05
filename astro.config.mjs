@@ -11,7 +11,7 @@ export default defineConfig({
 	// 根据您的部署环境设置基础路径
 	// 如果部署在根目录，使用 '/'
 	// 如果部署在子目录，使用 '/子目录名/'
-	site: 'https://ceciliahome.com',
+	site: 'https://www.ceciliahome.design',
 	base: '/',
 
 	integrations: [react(), icon()],
