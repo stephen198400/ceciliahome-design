@@ -1,0 +1,156 @@
+---
+import Hero from "../components/adus/Hero.astro";
+import CtaSection from "../components/CtaSection.astro";
+import Nav from "../components/Nav.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// 项目类型
+const projectTypes = [
+  "All",
+  "ADU Design",
+  "Load-bearing Wall",
+  "Kitchen Remodel",
+  "Foundation Inspection",
+  "Deck Design",
+  "Bath Remodel",
+  "House Extension",
+  "New Construction"
+];
+
+// 项目数据
+const projects = [
+  {
+    title: "ADU Design in San Jose",
+    type: "ADU Design",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=ADU+Design"
+  },
+  {
+    title: "Load-bearing Wall Removal in Palo Alto",
+    type: "Load-bearing Wall",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=Load-bearing+Wall"
+  },
+  {
+    title: "Kitchen Remodel in Cupertino",
+    type: "Kitchen Remodel",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=Kitchen+Remodel"
+  },
+  {
+    title: "Foundation Inspection in Sunnyvale",
+    type: "Foundation Inspection",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=Foundation+Inspection"
+  },
+  {
+    title: "Deck Design in Mountain View",
+    type: "Deck Design",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=Deck+Design"
+  },
+  {
+    title: "Bath Remodel in Santa Clara",
+    type: "Bath Remodel",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=Bath+Remodel"
+  },
+  {
+    title: "House Extension in Saratoga",
+    type: "House Extension",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=House+Extension"
+  },
+  {
+    title: "New Construction in Los Altos",
+    type: "New Construction",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=New+Construction"
+  },
+  {
+    title: "Garage Conversion ADU in San Jose",
+    type: "ADU Design",
+    image: "https://placehold.co/600x400/e6e6e6/333333?text=ADU+Design+2"
+  }
+];
+---
+
+<Layout title="Projects | Cecilia Home">
+ 
+  <div class="container   mx-auto px-4 py-8 md:py-12 ">
+    <h1 class="text-5xl md:text-6xl font-bold mb-12">Projects</h1>
+    
+    <!-- 类别筛选 -->
+    <div class="flex flex-wrap gap-3 mb-10">
+      {projectTypes.map(type => (
+        <button class="filter-btn cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-full text-sm md:text-base transition-colors duration-200" data-type={type}>
+          {type}
+        </button>
+      ))}
+    </div>
+    
+    <!-- 项目网格 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {projects.map(project => (
+        <div class="project-card overflow-hidden" data-type={project.type}>
+          <a href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`} class="block group">
+            <div class="relative overflow-hidden rounded-lg">
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                class="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <h3 class="mt-4 text-xl font-semibold">{project.title}</h3>
+            <p class="mt-1 text-gray-500">{project.type}</p>
+          </a>
+        </div>
+      ))}
+    </div>
+    </div>
+</Layout>
+
+<script>
+  // 筛选功能
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有按钮和项目卡片
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    // 为每个按钮添加点击事件
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // 获取点击的按钮类型
+        const filterType = this.getAttribute('data-type');
+        
+        // 移除所有按钮的活跃状态
+        filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-white'));
+        
+        // 添加当前按钮的活跃状态
+        this.classList.add('bg-primary', 'text-white');
+        
+        // 显示或隐藏项目卡片
+        projectCards.forEach(card => {
+          const cardType = card.getAttribute('data-type');
+          
+          if (filterType === 'All' || filterType === cardType) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // 默认选中"All"按钮
+    const allButton = document.querySelector('.filter-btn[data-type="All"]');
+    if (allButton) {
+      allButton.classList.add('bg-primary', 'text-white');
+    }
+  });
+  
+  // 处理CTA按钮滚动
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctaButton = document.querySelector('.scroll-to-center');
+    
+    if (ctaButton) {
+      ctaButton.addEventListener('click', function(e) {
+        // 因为链接到首页，所以不需要阻止默认行为
+        // 让它正常链接到首页的contactForm部分
+      });
+    }
+  });
+</script>

@@ -1,13 +1,11 @@
 ---
-import CtaSection from '../components/home/CtaSection.astro';
 import FeaturesSection from '../components/home/FeaturesSection.astro';
 import Hero from '../components/home/Hero.astro';
 import LatestArticlesSection from '../components/home/LatestArticlesSection.astro';
-import Nav from '../components/home/Nav.astro';
 import Services from '../components/home/Services.astro';
 import StatsSection from '../components/home/StatsSection.astro';
-import StepsSection from '../components/home/StepsSection.astro';
 import Testimonials from '../components/home/Testimonials.astro';
+import StepsSection from '../components/StepsSection.astro';
 import Layout from '../layouts/Layout.astro';
 
 
@@ -19,7 +17,6 @@ import Layout from '../layouts/Layout.astro';
   image="/hero.jpg"
   type="organization"
 >
-	<Nav />
   <main>
     <Hero />
     <StatsSection />
@@ -29,6 +26,6 @@ import Layout from '../layouts/Layout.astro';
     <StepsSection />
     <Testimonials />
     <LatestArticlesSection />
-    <CtaSection />
+    
   </main>
 </Layout>

@@ -1,0 +1,98 @@
+---
+
+interface AduType {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+}
+
+const aduTypes: AduType[] = [
+  {
+    id: 'detached-garage',
+    title: 'Detached Garage Conversion ADU',
+    description: 'Transform your standalone garage into a separate living space, providing an economical option by utilizing existing structures.',
+    image: 'https://placehold.co/600x400/e4e4e7/555?text=Detached+Garage+ADU',
+    alt: 'Detached Garage Conversion ADU'
+  },
+  {
+    id: 'attached-garage',
+    title: 'Attached Garage Conversion ADU',
+    description: 'Convert your attached garage into an ADU with convenient access to the main house while sharing utilities and common areas.',
+    image: 'https://placehold.co/600x400/e4e4e7/555?text=Attached+Garage+ADU',
+    alt: 'Attached Garage Conversion ADU'
+  },
+  {
+    id: 'new-detached',
+    title: 'New Detached ADU',
+    description: 'Build a completely new standalone ADU on your property, offering maximum privacy and freedom in design choices.',
+    image: 'https://placehold.co/600x400/e4e4e7/555?text=New+Detached+ADU',
+    alt: 'New Detached ADU'
+  },
+  {
+    id: 'new-attached',
+    title: 'New Attached ADU',
+    description: 'Construct a new ADU connected to your main house, allowing for easy access and potential sharing of infrastructure.',
+    image: 'https://placehold.co/600x400/e4e4e7/555?text=New+Attached+ADU',
+    alt: 'New Attached ADU'
+  },
+  {
+    id: 'existing-converted',
+    title: 'Existing Converted ADU',
+    description: 'Convert existing spaces like basements, attics, or outbuildings into legal ADU units with proper permitting and design.',
+    image: 'https://placehold.co/600x400/e4e4e7/555?text=Existing+Converted+ADU',
+    alt: 'Existing Converted ADU'
+  },
+  {
+    id: 'jadu',
+    title: 'JADU (Junior ADU)',
+    description: 'Small ADUs (max 500 sq ft) typically created within the main house, often sharing kitchen and bathroom facilities with the primary residence.',
+    image: 'https://placehold.co/600x400/e4e4e7/555?text=Junior+ADU+(JADU)',
+    alt: 'Junior Accessory Dwelling Unit'
+  }
+];
+---
+
+<section class="py-16 ">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <span class="text-primary bg-primary/10 px-4 py-2 rounded-full inline-block text-sm font-medium mb-6">
+        ADU SOLUTIONS
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        What Fits On <span class="text-primary">Your Property</span>
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        California offers various ADU options to fit your property and needs. Discover which type works best for your situation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {aduTypes.map((adu) => (
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src={adu.image} 
+              alt={adu.alt}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">{adu.title}</h3>
+            <p class="text-gray-600">{adu.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center">
+      <a 
+        href="#contactForm" 
+        class="inline-block px-8 py-4 bg-primary text-white rounded-md shadow-md hover:bg-primary/90 transition-colors duration-300"
+      >
+        Get A Free Consultation
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,243 @@
+---
+import { Image } from 'astro:assets';
+import faqImage from '../../assets/adus/faq.jpg';
+
+// FAQ问题和答案
+const faqs = [
+  {
+    id: 'faq-1',
+    question: 'What is an ADU and why should I consider building one?',
+    answer: 'An Accessory Dwelling Unit (ADU) is a secondary housing unit on a single-family residential lot. ADUs can provide rental income, space for family members, increase property value, and help address housing shortages. California has enacted laws to make ADU construction easier and more affordable for homeowners.'
+  },
+  {
+    id: 'faq-2',
+    question: 'What types of ADUs can I build on my property?',
+    answer: 'In California, you can build several types of ADUs: detached ADUs (standalone structures), attached ADUs (connected to the main house), garage conversions, Junior ADUs (within the main house, max 500 sq ft), and multiple ADUs on a single lot in some cases. The type that works best depends on your property size, layout, and specific needs.'
+  },
+  {
+    id: 'faq-3',
+    question: 'How long does the ADU design and permit process take?',
+    answer: 'At Cecilia Home, we can complete initial design drafts within one week and final designs within three weeks. The permit approval process typically takes 2-4 weeks for ministerial review (no discretionary approval needed for most ADUs in California). Our experience with local building departments helps streamline the process for faster approvals.'
+  },
+  {
+    id: 'faq-4',
+    question: 'How much does an ADU cost in California?',
+    answer: 'ADU costs vary based on type, size, and finishes. Garage conversions typically range from $100,000-$150,000, while new construction detached ADUs can range from $200,000-$400,000 for 500-1,200 sq ft units. Our design services include cost estimates and can help you plan a project that fits your budget while maximizing value.'
+  },
+  {
+    id: 'faq-5',
+    question: 'Can I rent out my ADU for income?',
+    answer: 'Yes, ADUs can be legally rented in California, providing significant rental income potential. In high-demand areas, ADUs can generate $1,500-$3,500 monthly, depending on size and location. You can rent both your primary residence and ADU, or live in one while renting the other. Cecilia Home can help design an ADU optimized for the rental market.'
+  },
+  {
+    id: 'faq-6',
+    question: 'How does Cecilia Home help with the ADU process?',
+    answer: 'We provide end-to-end ADU services, including site evaluation, conceptual design, construction documents, structural engineering, permit submission and processing, and contractor referrals. Our team of licensed professionals specializes in California ADU regulations and can guide you through the entire process, from initial concept to final approval.'
+  }
+];
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <span class="text-primary bg-primary/10 px-4 py-2 rounded-full inline-block text-sm font-medium mb-6">
+        GET ANSWERS
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Frequently Asked <span class="text-primary">Questions</span>
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Everything you need to know about ADUs in California and our design services.
+      </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-12 items-stretch">
+      <!-- Left Side - Image -->
+      <div class="lg:w-2/5 sm:flex hidden  lg:h-auto" id="faq-image-container">
+        <div class="relative rounded-xl overflow-hidden w-full h-full">
+          <Image 
+            src={faqImage} 
+            alt="ADU Frequently Asked Questions" 
+            class="w-full h-full object-cover rounded-xl object-center"
+            style=""
+          />
+        </div>
+      </div>
+
+      <!-- Right Side - FAQ -->
+      <div class="lg:w-3/5" id="faq-content">
+        <div class="space-y-4 h-full">
+          {faqs.map((faq, index) => (
+            <div class={`border rounded-lg overflow-hidden shadow-sm faq-card ${index === 0 ? 'active border-blue-200' : 'border-gray-200'}`} id={faq.id}>
+              <button 
+                class={`faq-toggle w-full px-6 py-4 flex justify-between items-center transition-colors focus:outline-none ${index === 0 ? 'bg-blue-50 text-primary' : 'bg-white hover:bg-gray-50'}`}
+                aria-expanded={index === 0 ? "true" : "false"}
+                aria-controls={`${faq.id}-answer`}
+              >
+                <span class="font-medium text-lg text-left">{faq.question}</span>
+                <svg class={`faq-icon w-5 h-5 transition-transform duration-300 flex-shrink-0 ml-4 ${index === 0 ? 'text-primary' : 'text-gray-500'}`} viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div 
+                id={`${faq.id}-answer`} 
+                class="faq-answer px-6 py-5 bg-blue-50" 
+                style={index === 0 ? "" : "display: none;"}
+              >
+                <p class="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 确保图片容器在大屏幕上占满整个高度 */
+  @media (min-width: 1024px) {
+    #faq-image-container {
+      height: 100%;
+      position: relative;
+    }
+    
+    #faq-image-container > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    
+    #faq-image-container img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  
+  @media (max-width: 1023px) {
+    #faq-image-container {
+      height: 500px; /* 在移动设备上提供一个合理的高度 */
+    }
+  }
+  
+  /* 活跃状态下的卡片样式 */
+  .faq-card.active {
+    border-color: #93c5fd; /* border-blue-200 */
+  }
+  
+  /* 添加过渡动画 */
+  .faq-toggle, .faq-icon {
+    transition: all 0.3s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有FAQ切换按钮和卡片
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    const faqCards = document.querySelectorAll('.faq-card');
+    const imageContainer = document.getElementById('faq-image-container');
+    const faqContent = document.getElementById('faq-content');
+    
+    // 设置初始高度
+    if (imageContainer && faqContent && window.innerWidth >= 1024) {
+      imageContainer.style.height = `${faqContent.offsetHeight}px`;
+    }
+    
+    // 窗口大小变化时更新高度
+    window.addEventListener('resize', () => {
+      if (imageContainer && faqContent && window.innerWidth >= 1024) {
+        imageContainer.style.height = `${faqContent.offsetHeight}px`;
+      } else if (imageContainer) {
+        imageContainer.style.height = '500px'; // 移动设备上的默认高度
+      }
+    });
+    
+    // 关闭所有FAQ的函数
+    const closeAllFaqs = () => {
+      faqCards.forEach(card => {
+        card.classList.remove('active');
+        const toggle = card.querySelector('.faq-toggle');
+        const answer = card.querySelector('.faq-answer') as HTMLElement | null;
+        const icon = card.querySelector('.faq-icon') as HTMLElement | null;
+        
+        if (toggle) {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.classList.remove('bg-blue-50', 'text-primary');
+          toggle.classList.add('bg-white');
+        }
+        
+        if (answer) {
+          answer.style.display = 'none';
+        }
+        
+        if (icon) {
+          icon.style.transform = 'rotate(0deg)';
+          icon.classList.remove('text-primary');
+          icon.classList.add('text-gray-500');
+        }
+      });
+    };
+    
+    // 打开特定FAQ的函数
+    const openFaq = (faqCard: Element) => {
+      const toggle = faqCard.querySelector('.faq-toggle');
+      const answer = faqCard.querySelector('.faq-answer') as HTMLElement | null;
+      const icon = faqCard.querySelector('.faq-icon') as HTMLElement | null;
+      
+      faqCard.classList.add('active');
+      
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.remove('bg-white');
+        toggle.classList.add('bg-blue-50', 'text-primary');
+      }
+      
+      if (answer) {
+        answer.style.display = 'block';
+      }
+      
+      if (icon) {
+        icon.style.transform = 'rotate(180deg)';
+        icon.classList.remove('text-gray-500');
+        icon.classList.add('text-primary');
+      }
+    };
+    
+    // 为每个按钮添加点击事件
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const faqCard = toggle.closest('.faq-card');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        
+        // 如果当前FAQ已经展开，则收起它
+        if (isExpanded) {
+          closeAllFaqs();
+        } else {
+          // 否则关闭所有FAQ，然后打开当前点击的FAQ
+          closeAllFaqs();
+          if (faqCard) {
+            openFaq(faqCard);
+          }
+        }
+        
+        // 更新FAQ展开/收起后的图片容器高度
+        setTimeout(() => {
+          if (imageContainer && faqContent && window.innerWidth >= 1024) {
+            imageContainer.style.height = `${faqContent.offsetHeight}px`;
+          }
+        }, 300);
+      });
+    });
+    
+    // 默认第一个FAQ旋转图标
+    const firstFaqIcon = document.querySelector('.faq-toggle:first-child .faq-icon') as HTMLElement | null;
+    if (firstFaqIcon) {
+      firstFaqIcon.style.transform = 'rotate(180deg)';
+    }
+  });
+</script> 

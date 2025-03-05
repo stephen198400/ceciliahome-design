@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import heroImage from '../../assets/hero.jpg';
+import heroImage from '../../assets/home/hero.jpg';
 import medal from '../../assets/medal.png';
 import thumbtackLogo from '../../assets/thumbtack-logo.png';
 ---
@@ -59,70 +59,3 @@ import thumbtackLogo from '../../assets/thumbtack-logo.png';
   </div>
 </section> 
 
-<script>
-  // 优化后的滚动逻辑，减少位置调整次数，避免UI卡顿
-  document.addEventListener('DOMContentLoaded', function() {
-    const scrollButtons = document.querySelectorAll('.scroll-to-center');
-    
-    scrollButtons.forEach((button) => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const clickedButton = e.currentTarget as HTMLAnchorElement;
-        const href = clickedButton.getAttribute('href');
-        
-        if (!href || !href.startsWith('#')) return;
-        
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (!targetElement) return;
-        
-        // 检测设备类型
-        const isMobile = window.innerWidth < 768;
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-        
-        // 获取导航栏元素和高度
-        const navbar = document.querySelector('nav') || document.querySelector('header');
-        const navbarHeight = navbar ? navbar.offsetHeight : 0;
-        
-        // 根据设备类型设置不同的偏移量
-        const additionalOffset = isMobile ?  -8: 10;
-        
-        // 获取表单section
-        const targetSection = targetElement.closest('section') || targetElement;
-        
-        // 预先计算位置，确保只滚动一次
-        // 等待一小段时间确保DOM完全更新
-        setTimeout(() => {
-          // 计算目标位置时考虑当前滚动位置的影响
-          const sectionTop = targetSection.getBoundingClientRect().top + window.scrollY;
-          let scrollPosition = sectionTop - navbarHeight - additionalOffset;
-          
-          // 对iOS设备进行特殊处理，使用不同的滚动行为
-          if (isIOS) {
-            // iOS设备使用position:fixed对上方导航栏处理不同，调整位置
-            scrollPosition -= 10; // 额外微调，针对iOS
-            
-            // 对iOS使用两步滚动，先快速到达，再精确定位
-            window.scrollTo(0, scrollPosition);
-            
-            // 很小的延迟后再次确认位置
-            requestAnimationFrame(() => {
-              window.scrollTo({
-                top: scrollPosition,
-                behavior: 'smooth'
-              });
-            });
-          } else {
-            // 非iOS设备直接使用平滑滚动
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'smooth'
-            });
-          }
-        }, isMobile ? 50 : 10); // 移动设备给予更多时间
-      });
-    });
-  });
-</script> 
