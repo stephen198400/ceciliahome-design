@@ -296,7 +296,29 @@ if (type === 'service') {
         if (!href || !href.startsWith('#')) return;
         
         const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
+        
+        // 支持多个表单ID的映射
+        let targetElement = null;
+        
+        // 检查是否是表单ID
+        if (targetId.endsWith('ContactForm')) {
+          // 首先尝试查找精确匹配的ID
+          targetElement = document.getElementById(targetId);
+          
+          // 如果找不到精确匹配，则查找当前页面上的任何ContactForm
+          if (!targetElement) {
+            const allForms = document.querySelectorAll('[id$="ContactForm"]');
+            if (allForms.length > 0) {
+              targetElement = allForms[0] as HTMLElement;
+            } else {
+              // 如果仍然找不到，尝试查找旧的contactForm ID
+              targetElement = document.getElementById('contactForm');
+            }
+          }
+        } else {
+          // 非表单ID的正常处理
+          targetElement = document.getElementById(targetId);
+        }
         
         if (!targetElement) return;
         
