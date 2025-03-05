@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import caregiverIcon from "../../assets/adus/whyAdu/caregiver-icon.png";
+import familyIcon from "../../assets/adus/whyAdu/family-icon.png";
+import rentalIcon from "../../assets/adus/whyAdu/rental-icon.png";
+---
+
+<section class="py-16 sm:py-20 lg:py-24 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+        Why You Need an ADU
+      </h2>
+      <p class="text-gray-600 text-lg sm:text-xl">
+        ADUs offer versatile solutions for homeowners looking to maximize their property's potential and address various living needs.
+      </p>
+    </div>
+
+    <div class="relative">
+      
+      <div class=" py-10 px-6 sm:px-10 rounded-lg">
+      
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1: Support Family Members -->
+          <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+              <Image src={familyIcon} alt="Family Icon" class="w-12 h-12"/>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-4">Support Family Members</h4>
+            <p class="text-gray-600 mb-4">
+              To meet today's alternative family arrangements, you need safe alternative housing options. ADUs make great in-law quarters and provide families with a place to care for their aging parents. ADUs are also a popular way to give adult children a place to live while respecting their privacy.
+            </p>
+          </div>
+          
+          <!-- Card 2: House On-Site Caregivers -->
+          <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+              <Image src={caregiverIcon} alt="Caregiver Icon" class="w-12 h-12"/>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-4">House On-Site Caregivers</h4>
+            <p class="text-gray-600 mb-4">
+              If your family relies on an on-site caregiver – like a live-in nurse or nanny – an ADU will give them the privacy and independence they need, while also giving you the on-site convenience you are looking for.
+            </p>
+          </div>
+          
+          <!-- Card 3: Additional Rental Income -->
+          <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+              <Image src={rentalIcon} alt="Rental Icon" class="w-12 h-12"/>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-4">Additional Rental Income</h4>
+            <p class="text-gray-600 mb-4">
+              Accessory Dwelling Units are the perfect fit for short- and long-term rentals. If you live in a popular community, you can Airbnb your ADU and get additional rental income. Or, you may choose to live in your ADU and rent out your main residence to short- or long-term tenants.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-12 text-center">
+      <a
+        href="#contactForm"
+        class="inline-block px-8 py-4 bg-primary text-white rounded-md shadow-md hover:bg-primary/90 transition-colors duration-300"
+      >
+        Start Planning Your ADU Today
+      </a>
+    </div>
+  </div>
+</section> 

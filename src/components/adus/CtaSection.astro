@@ -1,0 +1,276 @@
+<section class="bg-primary py-16 sm:py-20 lg:py-24">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-4 lg:gap-16">
+      <!-- Left Content -->
+      <div class="w-full lg:w-1/2">
+        <div class="max-w-xl">
+          <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Start Your ADU Project with Expert Guidance
+          </h2>
+          <p class="text-white/80 text-lg sm:text-xl mb-8">
+            Ready to add value to your property with an ADU? Our licensed architects and structural engineers have designed 1000+ successful ADU projects throughout California. Contact us today for a free consultation.
+          </p>
+          <ul class="space-y-4 md:block hidden text-white/90">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+              </svg>
+              
+              
+              <span>Expert ADU design and structural engineering services</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                <path d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 0 1 3.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0 1 21 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 0 1 7.5 16.125V3.375Z" />
+                <path d="M15 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 17.25 7.5h-1.875A.375.375 0 0 1 15 7.125V5.25ZM4.875 6H6v10.125A3.375 3.375 0 0 0 9.375 19.5H16.5v1.125c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V7.875C3 6.839 3.84 6 4.875 6Z" />
+              </svg>
+              
+              <span>Streamlined ADU permit acquisition services</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+              </svg>
+              <span>Fast turnaround and personalized ADU designs</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Right Form -->
+      <div class="w-full lg:w-1/2">
+        <div class="bg-white p-8 rounded-xl shadow-xl">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Get Your Free ADU Consultation</h3>
+          <form action="/thank-you" method="POST" class="lg:space-y-2 space-y-1" id="contactForm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:gap-5 gap-1">
+              <div class="space-y-2">
+                <label for="name" class="text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  placeholder="John Doe"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  required
+                  minlength="2"
+                />
+                <p class="text-xs text-red-500 hidden error-message" id="name-error"></p>
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-gray-700">Email Address <span class="text-red-500">*</span></label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="johndoe@example.com"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  required
+                />
+                <p class="text-xs text-red-500 hidden error-message" id="email-error"></p>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:gap-5 gap-1">
+              <div class="space-y-2">
+                <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  placeholder="(123) 456-7890"
+                  pattern="^(\+1|1)?[-.\s]?\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+                  title="Please enter a valid US phone number (e.g. (123) 456-7890 or 123-456-7890)"
+                />
+                
+                <p class="text-xs text-red-500 hidden error-message" id="phone-error"></p>
+              </div>
+              <div class="space-y-2">
+                <label for="service" class="text-sm font-medium text-gray-700">ADU Types <span class="text-red-500">*</span></label>
+                <div class="relative">
+                  <select 
+                    id="service" 
+                    name="service"
+                    class="w-full appearance-none px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition bg-white pr-10"
+                    required
+                  >
+                    <option value="" disabled selected>Choose Your ADU Type</option>
+                    <option value="adu">Attached ADU</option>
+                    <option value="adu">Detached ADU</option>
+                    <option value="adu">JADU</option>
+                  
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
+                <p class="text-xs text-red-500 hidden error-message" id="service-error"></p>
+              </div>
+            </div>
+            
+            <div class="space-y-2">
+              <label for="address" class="text-sm font-medium text-gray-700">Address</label>
+              <input 
+                type="text" 
+                id="address" 
+                name="address" 
+                placeholder="123 Main St, San Jose"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition"
+              />
+              
+              <p class="text-xs text-red-500 hidden error-message" id="address-error"></p>
+            </div>
+            
+            <div class="space-y-2">
+              <label for="message" class="text-sm font-medium text-gray-700">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                placeholder="Tell us about your project..."
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition resize-none"
+              ></textarea>
+              <p class="text-xs text-red-500 hidden error-message" id="message-error"></p>
+            </div>
+            
+            <div class="pt-2">
+              <button 
+                type="submit"
+                class="w-full px-6 py-4 bg-primary text-white font-medium rounded-lg shadow-md hover:bg-primary/80 transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+                id="submitButton"
+              >
+                Start Your ADU Project
+              </button>
+              <p class="text-xs text-red-500 hidden mt-2" id="form-error"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 客户端表单验证
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm') as HTMLFormElement;
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          // 重置错误信息
+          const errorElements = document.querySelectorAll('.error-message');
+          errorElements.forEach(el => el.classList.add('hidden'));
+          
+          // 收集表单数据
+          const formData = new FormData(contactForm);
+          
+          // 客户端验证
+          let isValid = true;
+          
+          // 验证加州地址
+          const address = formData.get('address');
+          if (address && typeof address === 'string' && address.trim() !== '') {
+            const californiaKeywords = ['CA', 'California', 'calif', 'ca', 'california'];
+            const isCaliforniaAddress = californiaKeywords.some(keyword => 
+              address.toLowerCase().includes(keyword.toLowerCase())
+            );
+            
+            if (!isCaliforniaAddress) {
+              const addressError = document.getElementById('address-error');
+              if (addressError) {
+                addressError.textContent = 'Address must be in California';
+                addressError.classList.remove('hidden');
+              }
+              isValid = false;
+            }
+          }
+          
+          // 验证电话号码
+          const phone = formData.get('phone');
+          if (phone && typeof phone === 'string' && phone.trim() !== '') {
+            const phoneRegex = /^(\+1|1)?[-.\s]?\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/;
+            if (!phoneRegex.test(phone)) {
+              const phoneError = document.getElementById('phone-error');
+              if (phoneError) {
+                phoneError.textContent = 'Please enter a valid US phone number';
+                phoneError.classList.remove('hidden');
+              }
+              isValid = false;
+            }
+          }
+          
+          if (isValid) {
+            try {
+              // 禁用提交按钮防止重复提交
+              const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+              if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+              }
+              
+              // 提交表单
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: formData
+              });
+              
+              if (response.redirected) {
+                // 成功并重定向
+                window.location.href = response.url;
+              } else {
+                // 处理API错误
+                const data = await response.json();
+                
+                if (data.errors) {
+                  // 显示特定字段错误
+                  Object.entries(data.errors).forEach(([field, errorInfo]) => {
+                    if (field !== '_errors') {
+                      const errorElement = document.getElementById(`${field}-error`);
+                      const errorData = errorInfo as { _errors?: string[] };
+                      if (errorElement && errorData._errors && errorData._errors.length) {
+                        errorElement.textContent = errorData._errors[0];
+                        errorElement.classList.remove('hidden');
+                      }
+                    }
+                  });
+                } else {
+                  // 显示一般错误
+                  const formError = document.getElementById('form-error');
+                  if (formError) {
+                    formError.textContent = data.message || 'There was an error submitting the form. Please try again.';
+                    formError.classList.remove('hidden');
+                  }
+                }
+                
+                // 重新启用提交按钮
+                if (submitButton) {
+                  submitButton.disabled = false;
+                  submitButton.textContent = 'Send Message';
+                }
+              }
+            } catch (error) {
+              console.error('Error submitting form:', error);
+              
+              // 显示一般错误
+              const formError = document.getElementById('form-error');
+              if (formError) {
+                formError.textContent = 'There was an error submitting the form. Please try again.';
+                formError.classList.remove('hidden');
+              }
+              
+              // 重新启用提交按钮
+              const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+              if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</section> 

@@ -1,10 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import attachedGarage from '../../assets/adus/adu-types/attached-garage.png';
+import detachedGarage from '../../assets/adus/adu-types/detached-garage.png';
+import existingConverted from '../../assets/adus/adu-types/existing-converted.png';
+import jadu from '../../assets/adus/adu-types/jadu.png';
+import newAttached from '../../assets/adus/adu-types/new-attached.png';
+import newDetached from '../../assets/adus/adu-types/new-detached.png';
 
 interface AduType {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
   alt: string;
 }
 
@@ -13,42 +20,42 @@ const aduTypes: AduType[] = [
     id: 'detached-garage',
     title: 'Detached Garage Conversion ADU',
     description: 'Transform your standalone garage into a separate living space, providing an economical option by utilizing existing structures.',
-    image: 'https://placehold.co/600x400/e4e4e7/555?text=Detached+Garage+ADU',
+    image: detachedGarage,
     alt: 'Detached Garage Conversion ADU'
   },
   {
     id: 'attached-garage',
     title: 'Attached Garage Conversion ADU',
     description: 'Convert your attached garage into an ADU with convenient access to the main house while sharing utilities and common areas.',
-    image: 'https://placehold.co/600x400/e4e4e7/555?text=Attached+Garage+ADU',
+    image: attachedGarage,
     alt: 'Attached Garage Conversion ADU'
   },
   {
     id: 'new-detached',
     title: 'New Detached ADU',
     description: 'Build a completely new standalone ADU on your property, offering maximum privacy and freedom in design choices.',
-    image: 'https://placehold.co/600x400/e4e4e7/555?text=New+Detached+ADU',
+    image: newDetached,
     alt: 'New Detached ADU'
   },
   {
     id: 'new-attached',
     title: 'New Attached ADU',
     description: 'Construct a new ADU connected to your main house, allowing for easy access and potential sharing of infrastructure.',
-    image: 'https://placehold.co/600x400/e4e4e7/555?text=New+Attached+ADU',
+    image: newAttached,
     alt: 'New Attached ADU'
   },
   {
     id: 'existing-converted',
     title: 'Existing Converted ADU',
     description: 'Convert existing spaces like basements, attics, or outbuildings into legal ADU units with proper permitting and design.',
-    image: 'https://placehold.co/600x400/e4e4e7/555?text=Existing+Converted+ADU',
+    image: existingConverted,
     alt: 'Existing Converted ADU'
   },
   {
     id: 'jadu',
     title: 'JADU (Junior ADU)',
     description: 'Small ADUs (max 500 sq ft) typically created within the main house, often sharing kitchen and bathroom facilities with the primary residence.',
-    image: 'https://placehold.co/600x400/e4e4e7/555?text=Junior+ADU+(JADU)',
+    image: jadu,
     alt: 'Junior Accessory Dwelling Unit'
   }
 ];
@@ -72,10 +79,10 @@ const aduTypes: AduType[] = [
       {aduTypes.map((adu) => (
         <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
           <div class="relative h-64 overflow-hidden">
-            <img 
+            <Image 
               src={adu.image} 
               alt={adu.alt}
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              class="w-full h-full object-center transition-transform duration-500 hover:scale-105"
             />
           </div>
           <div class="p-6">
@@ -91,7 +98,7 @@ const aduTypes: AduType[] = [
         href="#contactForm" 
         class="inline-block px-8 py-4 bg-primary text-white rounded-md shadow-md hover:bg-primary/90 transition-colors duration-300"
       >
-        Get Free Templates
+        Talk to an ADU Expert
       </a>
     </div>
   </div>
