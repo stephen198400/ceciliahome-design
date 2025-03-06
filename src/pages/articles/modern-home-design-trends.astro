@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import modernBuildingImg from '../../assets/adus/hero.jpg';
+import CtaSection from "../../components/CtaSection.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-3xl mx-auto">
+      <!-- 文章元数据 -->
+      <div class="mb-6">
+        <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-md mr-2">
+          News
+        </span>
+        <span class="text-gray-500 text-sm">
+          January 10, 2024
+        </span>
+      </div>
+      
+      <!-- 文章标题 -->
+      <h1 class="text-4xl md:text-5xl font-bold mb-8">
+        2024 Modern Home Design Trends: What California Homeowners Need to Know
+      </h1>
+      
+      <!-- 文章封面图 -->
+      <div class="mb-10">
+        <Image 
+          src={modernBuildingImg} 
+          alt="Modern Home Design Trends" 
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+      
+      <!-- 文章内容 -->
+      <div class="prose prose-lg max-w-none">
+        <p>
+          As we enter 2024, California homeowners are increasingly focused on creating spaces that blend functionality, sustainability, and aesthetic appeal. At Cecilia Home, we're seeing several key trends emerge in modern home design that are particularly relevant to the California market.
+        </p>
+        
+        <h2>Sustainable Materials and Energy Efficiency</h2>
+        <p>
+          Sustainability continues to be at the forefront of modern home design. California homeowners are increasingly choosing eco-friendly building materials such as reclaimed wood, recycled metal, and low-VOC paints. Energy efficiency is also a major consideration, with a growing emphasis on solar panels, high-efficiency HVAC systems, and smart home technology that optimizes energy use.
+        </p>
+        
+        <h2>Indoor-Outdoor Living Spaces</h2>
+        <p>
+          California's favorable climate makes it ideal for blending indoor and outdoor living areas. We're seeing a surge in demand for seamless transitions between interior spaces and outdoor environments, with features like sliding glass walls, covered patios, and outdoor kitchens becoming increasingly popular.
+        </p>
+        
+        <h2>Multifunctional Spaces</h2>
+        <p>
+          With the continued prevalence of remote work, California homeowners are seeking designs that accommodate various activities within the same space. This includes home offices that can transform into guest rooms, living areas that can serve as entertainment spaces, and kitchens designed for both cooking and socializing.
+        </p>
+        
+        <h2>Biophilic Design Elements</h2>
+        <p>
+          Incorporating nature into home design is a trend that continues to grow. This includes not only adding plants and natural materials but also maximizing natural light and creating views of outdoor landscapes. Biophilic design has been shown to reduce stress and improve well-being, making it a particularly appealing approach for California homeowners.
+        </p>
+        
+        <h2>ADUs and Flexible Living Arrangements</h2>
+        <p>
+          Accessory Dwelling Units (ADUs) remain a significant trend in California, driven by housing shortages and changing family dynamics. These secondary units offer flexibility for multigenerational living, rental income, or home offices. Recent regulatory changes have made it easier for homeowners to add ADUs to their properties.
+        </p>
+        
+        <h2>Conclusion</h2>
+        <p>
+          As we progress through 2024, these trends will likely continue to evolve, reflecting broader societal shifts towards sustainability, flexibility, and well-being. At Cecilia Home, we're committed to helping California homeowners navigate these trends and create spaces that are not only beautiful but also functional and aligned with their values.
+        </p>
+        
+        <p>
+          If you're considering a home renovation or new construction project, we'd be happy to discuss how these trends might be incorporated into your specific context.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <CtaSection />
+</Layout> 

@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import fireRestorationImg from '../../assets/fire-restoration/fire-damage-house-before.webp';
+import CtaSection from "../../components/CtaSection.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Fire Restoration: Critical Steps for Homeowners After a Disaster";
+const description = "Learn the essential steps homeowners should take after experiencing fire damage, from structural assessment to rebuilding.";
+const publishDate = new Date("2023-07-28");
+const author = "Cecilia Home Engineering Team";
+---
+
+<Layout
+  title={title}
+  description={description}
+  type="article"
+  author={author}
+  publishDate={publishDate}
+  image="/assets/fire-restoration/fire-damage-house-before.webp"
+>
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-3xl mx-auto">
+      <!-- 文章元数据 -->
+      <div class="mb-6">
+        <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-md mr-2">
+          Insights
+        </span>
+        <span class="text-gray-500 text-sm">
+          July 28, 2023
+        </span>
+      </div>
+      
+      <!-- 文章标题 -->
+      <h1 class="text-4xl md:text-5xl font-bold mb-8">
+        Fire Restoration: Critical Steps for Homeowners After a Disaster
+      </h1>
+      
+      <!-- 文章封面图 -->
+      <div class="mb-10">
+        <Image 
+          src={fireRestorationImg} 
+          alt="Fire damaged home" 
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+      
+      <!-- 文章内容 -->
+      <div class="prose prose-lg max-w-none">
+        <p>
+          Experiencing a house fire is one of the most traumatic events a homeowner can face. Beyond the immediate safety concerns, the aftermath presents a complex recovery process that requires careful planning and professional assistance. At Cecilia Home, we've helped numerous California families navigate the challenging journey of fire restoration. This guide outlines the critical steps homeowners should take after experiencing fire damage.
+        </p>
+        
+        <h2>Immediate Safety and Damage Assessment</h2>
+        <p>
+          Your first priority is safety. Never re-enter a fire-damaged structure until it has been declared safe by fire officials. Once permitted to return, it's crucial to have a professional structural engineer assess the building's integrity. Fire can compromise structural elements in ways that aren't always visible to the untrained eye, creating potentially dangerous conditions.
+        </p>
+        
+        <h2>Document Everything for Insurance Claims</h2>
+        <p>
+          Before any cleanup begins, thoroughly document all damage through photos and videos. Create a detailed inventory of damaged items, including their approximate value and age. This documentation is essential for insurance claims and can significantly impact your reimbursement. A professional structural inspection report can provide valuable evidence for your insurance company.
+        </p>
+        
+        <h2>Secure the Property</h2>
+        <p>
+          After a fire, your home may be vulnerable to the elements and potential trespassers. Board up windows, doors, and any holes in the structure. If necessary, arrange for temporary fencing around the property. This step not only protects what remains but may also be required by your insurance company.
+        </p>
+        
+        <h2>Professional Cleaning and Smoke Removal</h2>
+        <p>
+          Fire damage extends beyond what's visibly burned. Smoke, soot, and water from firefighting efforts can cause extensive secondary damage. Professional restoration services use specialized equipment and techniques to address these issues, preventing long-term problems like mold growth and persistent odors.
+        </p>
+        
+        <h2>Structural Repairs and Rebuilding</h2>
+        <p>
+          Based on the structural assessment, develop a comprehensive repair plan. This may involve:
+        </p>
+        <ul>
+          <li>Replacing damaged structural elements like beams, joists, and load-bearing walls</li>
+          <li>Repairing or replacing damaged electrical, plumbing, and HVAC systems</li>
+          <li>Addressing water damage from firefighting efforts</li>
+          <li>Reinforcing weakened structural components</li>
+        </ul>
+        
+        <h2>Building Code Compliance</h2>
+        <p>
+          When rebuilding after a fire, you'll need to comply with current building codes, which may have changed since your home was originally built. This is particularly relevant in California, where codes related to fire resistance, energy efficiency, and seismic safety are regularly updated. Working with experienced professionals ensures your restoration meets all current requirements.
+        </p>
+        
+        <h2>Mental Health and Emotional Recovery</h2>
+        <p>
+          The emotional impact of losing a home to fire shouldn't be underestimated. While focused on the physical restoration, remember to seek support for the emotional aspects of recovery. Many communities offer resources for disaster survivors, and professional counseling can be beneficial.
+        </p>
+        
+        <h2>Conclusion</h2>
+        <p>
+          Recovering from fire damage is a complex process that requires patience, professional guidance, and careful planning. At Cecilia Home, we specialize in helping homeowners navigate the structural aspects of fire restoration, ensuring that rebuilt homes are safe, compliant with current codes, and designed to prevent future fire damage.
+        </p>
+        
+        <p>
+          If you're facing the challenge of rebuilding after a fire, our team of structural engineers and design professionals is here to help. Contact us for a consultation to discuss your specific situation and develop a comprehensive restoration plan.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <CtaSection />
+</Layout> 

@@ -3,7 +3,11 @@ import { Image } from 'astro:assets';
 import logoImage from '../assets/logo.png';
 const SITE_URL = "https://www.ceciliahome.net";
 ---
-<nav class="fixed left-0 right-0 top-0 z-40 bg-gray-100">
+<div class="text-center py-1 bg-primary fixed top-0 left-0 right-0 z-50 px-2">
+  <a href="/fire-restoration" class="text-center text-[12px] sm:text-[12px] text-white hover:underline inline-block">Wild-Fire Damage? Get Your FREE Structural Assessment Today!</a>
+</div>
+
+<nav class="fixed left-0 right-0 z-40 bg-gray-100" style="top: var(--banner-height, 2rem);">
   <div class="flex justify-between items-center container mx-auto px-4 h-16">
     {/* Logo部分 */}
     <div class="flex items-center gap-2">
@@ -48,7 +52,7 @@ const SITE_URL = "https://www.ceciliahome.net";
   </div>
 
   {/* 移动端菜单 */}
-  <div class="md:hidden bg-gray-100 fixed left-0 right-0 transform transition-all duration-300 ease-in-out shadow-lg opacity-0 -translate-y-2 pointer-events-none max-h-[calc(100vh-4rem)] overflow-y-auto" id="mobile-menu" style="top: 4rem;">
+  <div class="md:hidden bg-gray-100 fixed left-0 right-0 transform transition-all duration-300 ease-in-out shadow-lg opacity-0 -translate-y-2 pointer-events-none max-h-[calc(100vh-6rem)] overflow-y-auto" id="mobile-menu" style="top: calc(var(--banner-height, 2rem) + 4rem);">
     <div class="container mx-auto px-4 py-4 space-y-4">
       <a href="/adus" class="block hover:text-blue-500 transition-colors">ADUs</a>
       <a href="/fire-restoration" class="block hover:text-blue-500 transition-colors">Fire Restoration</a>
@@ -81,20 +85,27 @@ const SITE_URL = "https://www.ceciliahome.net";
 </style>
 
 <script>
-  // 更新导航下方的空白区域高度
-  function updateNavSpacer() {
-    const navSpacer = document.getElementById('nav-spacer');
-    const nav = document.querySelector('nav');
-    if (navSpacer && nav) {
-      navSpacer.style.height = (nav as HTMLElement).offsetHeight + 'px';
+  // 计算横幅的高度并设置导航栏的位置
+  function updateBannerHeight() {
+    const banner = document.querySelector('.bg-primary');
+    if (banner) {
+      const height = (banner as HTMLElement).offsetHeight;
+      document.documentElement.style.setProperty('--banner-height', height + 'px');
+      
+      // 更新导航下方的空白区域高度
+      const navSpacer = document.getElementById('nav-spacer');
+      const nav = document.querySelector('nav');
+      if (navSpacer && nav) {
+        navSpacer.style.height = (height + (nav as HTMLElement).offsetHeight) + 'px';
+      }
     }
   }
 
   // 页面加载时执行
-  updateNavSpacer();
+  updateBannerHeight();
   
   // 窗口大小改变时重新计算
-  window.addEventListener('resize', updateNavSpacer);
+  window.addEventListener('resize', updateBannerHeight);
 
   // 现有的菜单切换代码
   const menuToggle = document.getElementById('menu-toggle');
