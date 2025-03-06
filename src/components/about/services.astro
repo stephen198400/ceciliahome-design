@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets";
+import commercialIcon from "../../assets/about/commercial.png";
+import constructionIcon from "../../assets/about/construction.png";
+import otherServicesIcon from "../../assets/about/other-service.png";
+import residentialIcon from "../../assets/about/residential.png";
+import serviceImage from '../../assets/home/features/features.jpg';
+
+// 团队成员占位图像
+const masonImage = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2944&auto=format&fit=crop";
+const lindaImage = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2888&auto=format&fit=crop";
+const jamesImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop";
+const sarahImage = "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2961&auto=format&fit=crop";
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div>
+      <p class="text-sm text-primary font-medium mb-2 flex items-center gap-2">
+        <span class="inline-block w-4 h-4 rounded-full bg-primary opacity-30"></span>
+        WHAT WE DO
+      </p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+        Our Services
+      </h2>
+    </div>
+    
+    <div class="flex flex-col lg:flex-row gap-10">
+      <!-- Left image -->
+      <div class="lg:w-[45%] relative rounded-xl overflow-hidden">
+        <Image
+          src={serviceImage} 
+          alt="Cecilia Home architectural design services" 
+          class="absolute inset-0 w-full h-full object-cover"
+          width="800"
+          height="800"
+        />
+      </div>
+      
+      <!-- Right content - Service cards -->
+      <div class="lg:w-[55%] flex flex-col">
+        
+        <h3 class="text-2xl font-bold mb-6 text-gray-800">Comprehensive Design & Engineering Solutions</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+          <!-- Service Card 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div class="text-primary mb-4">
+              <Image src={residentialIcon} alt="Residential Structural & Architectural Design" class="w-12 h-12" />
+            </div>
+            <h4 class="text-xl font-bold mb-2 text-gray-800">Residential Project Design</h4>
+            <p class="text-gray-600 text-sm">
+              We provide comprehensive structural and architectural design services for residential projects throughout California, including new constructions, renovations, and ADUs.
+            </p>
+          </div>
+          
+          <!-- Service Card 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div class="text-primary mb-4">
+              <Image src={commercialIcon} alt="Commercial Project Design" class="w-12 h-12" />
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold mb-2 text-gray-800">Commercial Project Design</h4>
+            <p class="text-gray-600 text-sm">
+              Specialized in commercial space design for restaurants, spas, massage parlors, retail stores, and office spaces with full building code compliance.
+            </p>
+          </div>
+          
+          <!-- Service Card 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div class="text-primary mb-4">
+              <Image src={constructionIcon} alt="Construction Design & Management" class="w-12 h-12" />
+            </div>
+            <h4 class="text-xl font-bold mb-2 text-gray-800">Construction Design & Management</h4>
+            <p class="text-gray-600 text-sm">
+              End-to-end construction design and project management services including blueprint creation, permit acquisition and contractor coordination.
+            </p>
+          </div>
+          
+          <!-- Service Card 4 - Contact Us -->
+          <button  class="bg-white cursor-pointer text-start p-6 rounded-lg shadow-sm border border-gray-100">
+            <a href="#contactForm">
+              <div class="text-primary mb-4">
+              <Image src={otherServicesIcon} alt="Need Other Services?" class="w-12 h-12" />
+            </div>
+            <h4 class="text-xl font-bold mb-2 text-gray-800">Need Other Services?</h4>
+            <p class="text-gray-600 text-sm">
+              For any other architectural or structural engineering services not listed here, please contact us directly for personalized assistance.
+            </p>
+          </a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

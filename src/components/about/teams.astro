@@ -1,0 +1,103 @@
+---
+// 使用占位图像URL，后续可以替换为实际图像
+const aboutHeroImage = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop";
+const aboutServiceImage = "https://images.unsplash.com/photo-1600607687644-c7531e489ece?q=80&w=2953&auto=format&fit=crop";
+
+// 团队成员占位图像 - 使用专业商务肖像
+const masonImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop";
+const collinImage = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2944&auto=format&fit=crop";
+const melchorImage = "https://images.unsplash.com/photo-1565464027194-7957a2295fb7?q=80&w=3000&auto=format&fit=crop";
+const charineImage = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2888&auto=format&fit=crop";
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <p class="text-sm text-primary font-medium mb-2 flex items-center gap-2">
+      <span class="inline-block w-4 h-4 rounded-full bg-primary opacity-30"></span>
+      OUR LEADERSHIP
+    </p>
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      Meet Our Team
+    </h2>
+    <p class="text-lg text-gray-600 max-w-3xl mb-12">
+      Our expert team combines years of experience in structural engineering and architectural design to deliver exceptional results for our clients.
+    </p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+      <!-- Team Member 1 - CEO -->
+      <div class="group">
+        <div class="mb-5 relative overflow-hidden rounded-xl shadow-sm bg-gray-50">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img 
+              src={masonImage} 
+              alt="Mason Zheng - CEO" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="300"
+              height="400"
+            />
+          </div>
+          
+        </div>
+        <h3 class="text-xl font-bold text-gray-900">Mason Zheng</h3>
+        <p class="text-gray-600">Chief Executive Officer</p>
+        <p class="mt-2 text-sm text-gray-500 line-clamp-2">With over 15 years of experience in structural engineering and business leadership.</p>
+      </div>
+      
+      <!-- Team Member 2 - Project Director -->
+      <div class="group">
+        <div class="mb-5 relative overflow-hidden rounded-xl shadow-sm bg-gray-50">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img 
+              src={collinImage} 
+              alt="Collin Ma - Project Director" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="300"
+              height="400"
+            />
+          </div>
+         
+        </div>
+        <h3 class="text-xl font-bold text-gray-900">Collin Ma</h3>
+        <p class="text-gray-600">Project Director</p>
+        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Oversees all design and construction projects to ensure quality and client satisfaction.</p>
+      </div>
+      
+      <!-- Team Member 3 - Client Manager -->
+      <div class="group">
+        <div class="mb-5 relative overflow-hidden rounded-xl shadow-sm bg-gray-50">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img 
+              src={melchorImage} 
+              alt="Melchor - Client Manager" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="300"
+              height="400"
+            />
+          </div>
+         
+        </div>
+        <h3 class="text-xl font-bold text-gray-900">Melchor</h3>
+        <p class="text-gray-600">Client Relations Manager</p>
+        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Dedicated to providing exceptional customer service and managing client relationships.</p>
+      </div>
+      
+      <!-- Team Member 4 - Client Manager -->
+      <div class="group">
+        <div class="mb-5 relative overflow-hidden rounded-xl shadow-sm bg-gray-50">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img 
+              src={charineImage} 
+              alt="Charine - Client Manager" 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="300"
+              height="400"
+            />
+          </div>      
+        </div>
+        <h3 class="text-xl font-bold text-gray-900">Charine</h3>
+        <p class="text-gray-600">Client Relations Manager</p>
+        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Specializes in understanding client needs and ensuring project expectations are met.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,95 @@
+---
+
+// 使用占位图像URL，后续可以替换为实际图像
+const aboutHeroImage = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop";
+const aboutServiceImage = "https://images.unsplash.com/photo-1600607687644-c7531e489ece?q=80&w=2953&auto=format&fit=crop";
+
+// 团队成员占位图像
+const masonImage = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2944&auto=format&fit=crop";
+const lindaImage = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2888&auto=format&fit=crop";
+const jamesImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop";
+const sarahImage = "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2961&auto=format&fit=crop";
+---
+
+<section class="container mx-auto px-4 mb-16">
+  <div class="flex flex-col lg:flex-row gap-12">
+    <!-- Left content -->
+    <div class="lg:w-1/2 flex flex-col justify-between h-auto lg:h-[600px] py-8 lg:py-12">
+      <div>
+        <p class="text-sm text-primary font-medium mb-2 flex items-center gap-2">
+          <span class="inline-block w-4 h-4 rounded-full bg-primary opacity-30"></span>
+          WHO WE ARE
+        </p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          About us
+        </h1>
+        
+        <div class="mb-6">
+          <p class="text-xl font-medium mb-3">
+            At Cecilia Home, we are passionate about creating thoughtful, high-quality structural designs that transform spaces and enhance lives.
+          </p>
+          <p class="text-gray-600 mb-3">
+            Founded on the principles of technical excellence, innovation, and client-centric service, our design firm is dedicated to delivering exceptional structural solutions for residential and commercial projects.
+          </p>
+          <p class="text-gray-600">
+            Whether you're planning an ADU, renovating your home, or developing a commercial property, we bring the same level of commitment and expertise to every project.
+          </p>
+        </div>
+        
+        <!-- Features -->
+        <div class="mt-auto mb-6">
+          <div class="grid gap-3">
+            <div class="flex items-center gap-2">
+              <span class="text-primary text-lg">✓</span>
+              <span>Professional Structural Engineering Solutions</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-primary text-lg">✓</span>
+              <span>Code-Compliant Design & Permitting Support</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-primary text-lg">✓</span>
+              <span>Collaborative Approach with Architects & Contractors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA Button -->
+      <div class="mt-auto">
+        <a href="#contactForm" class="inline-block cursor-pointer px-8 py-4 bg-primary text-white rounded-md shadow-md hover:bg-primary/90 transition-colors duration-300 scroll-to-center">
+          Get Started
+         
+        </a>
+      </div>
+    </div>
+    
+    <!-- Right images -->
+    <div class="lg:w-1/2 h-[400px] lg:h-[600px] relative rounded-xl overflow-hidden">
+      <img 
+        src={aboutHeroImage} 
+        alt="Cecilia Home warehouse environment" 
+        class="w-full h-full object-cover"
+        width="800"
+        height="600"
+      />
+      <div class="absolute bottom-10 right-10 z-20 bg-white p-5 rounded-lg shadow-lg">
+        <h3 class="font-bold mb-2 text-sm">Trusted by Homeowners</h3>
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+            <img src={masonImage} alt="Client" width="32" height="32" class="w-full h-full object-cover" />
+          </div>
+          <div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+            <img src={lindaImage} alt="Client" width="32" height="32" class="w-full h-full object-cover" />
+          </div>
+          <div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+            <img src={jamesImage} alt="Client" width="32" height="32" class="w-full h-full object-cover" />
+          </div>
+          <div class="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+            <img src={sarahImage} alt="Client" width="32" height="32" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

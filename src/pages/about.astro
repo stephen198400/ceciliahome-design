@@ -1,0 +1,29 @@
+---
+import Hero from '../components/about/hero.astro';
+import Services from '../components/about/services.astro';
+import Teams from '../components/about/teams.astro';
+import CtaSection from '../components/CtaSection.astro';
+import StatsSection from '../components/home/StatsSection.astro';
+import Layout from '../layouts/Layout.astro';
+
+// 使用占位图像URL，后续可以替换为实际图像
+const aboutHeroImage = "https://images.unsplash.com/photo-1577415124269-fc1140a69e91?q=80&w=2940&auto=format&fit=crop";
+const aboutServiceImage = "https://images.unsplash.com/photo-1600607687644-c7531e489ece?q=80&w=2953&auto=format&fit=crop";
+
+// 团队成员占位图像
+const masonImage = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2944&auto=format&fit=crop";
+const lindaImage = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2888&auto=format&fit=crop";
+const jamesImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop";
+const sarahImage = "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2961&auto=format&fit=crop";
+---
+
+<Layout title="About Us | Cecilia Home">
+  <main class="pt-8 pb-16">
+    <!-- Hero Section -->
+    <Hero />
+    <StatsSection />
+    <Services />
+    <Teams />
+    <CtaSection />
+  </main>
+</Layout>
