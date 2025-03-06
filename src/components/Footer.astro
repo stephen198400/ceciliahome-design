@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/logo.png';
 const companyLinks = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
@@ -27,7 +29,7 @@ const utilityLinks = [
       {/* Company Info */}
       <div>
         <div class="flex items-center gap-2 mb-4">
-          <img src="/logo.png" alt="Cecilia Home" class="w-8 h-8" />
+          <Image src={logoImage} alt="Cecilia Home" class="w-8 h-8" />
           <span class="text-xl text-primary font-bold">Cecilia Home</span>
         </div>
         <p class=" mb-6 text-gray-500">
