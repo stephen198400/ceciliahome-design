@@ -45,7 +45,7 @@ import aduPlans from '../../assets/adus/adu-plans.png';
       <div class="w-full lg:w-1/2">
         <div class="bg-white p-8 rounded-xl shadow-xl h-full">
           <h3 class="text-2xl font-bold text-gray-800 mb-6">Get In Touch</h3>
-          <form action="/thank-you" method="POST" class="lg:space-y-2 space-y-1" id="contactForm">
+          <form action="/api/contact" method="POST" class="lg:space-y-2 space-y-1" id="contactForm">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:gap-5 gap-1">
               <div class="space-y-2">
                 <label for="name" class="text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
@@ -200,6 +200,9 @@ import aduPlans from '../../assets/adus/adu-plans.png';
               if (response.redirected) {
                 // 成功并重定向
                 window.location.href = response.url;
+              } else if (response.ok) {
+                // 如果API成功但没有重定向，手动跳转到thank-you页面
+                window.location.href = '/thank-you';
               } else {
                 // 处理API错误
                 const data = await response.json();

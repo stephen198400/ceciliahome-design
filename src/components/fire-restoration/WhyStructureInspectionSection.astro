@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import safetyIcon from "../../assets/adus/whyAdu/caregiver-icon.png";
+import insuranceIcon from "../../assets/adus/whyAdu/family-icon.png";
+import rebuildIcon from "../../assets/adus/whyAdu/rental-icon.png";
+---
+
+<section class="py-16 ">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+        Why You Need Fire Damage Restoration & Inspection
+      </h2>
+      <p class="text-gray-600 text-lg sm:text-xl">
+        Professional structural inspection and restoration after a fire are crucial for ensuring your family's safety and property value, while helping you return to normal life faster.
+      </p>
+    </div>
+
+    <div class="relative">
+      
+      <div class=" py-10 px-6 sm:px-10 rounded-lg">
+      
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1: Safety Issues -->
+          <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+              <Image src={safetyIcon} alt="Safety Icon" class="w-12 h-12"/>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-4">Ensure Structural Safety</h4>
+            <p class="text-gray-600 mb-4">
+              Fire-damaged buildings often have serious hidden structural issues. Even when surfaces appear intact, internal structures may be compromised, threatening your family's safety. Professional inspection identifies these potential dangers and prevents more serious accidents.
+            </p>
+          </div>
+          
+          <!-- Card 2: Insurance Claims -->
+          <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+              <Image src={insuranceIcon} alt="Insurance Icon" class="w-12 h-12"/>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-4">Optimize Insurance Claims</h4>
+            <p class="text-gray-600 mb-4">
+              Our professional structural inspection reports provide powerful evidence for insurance claims. Detailed damage assessments and repair recommendations help you receive fair compensation, ensuring all fire-related losses are included in your claim and maximizing your insurance benefits.
+            </p>
+          </div>
+          
+          <!-- Card 3: Quick Rebuilding -->
+          <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+              <Image src={rebuildIcon} alt="Rebuild Icon" class="w-12 h-12"/>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-4">Accelerate Home Rebuilding</h4>
+            <p class="text-gray-600 mb-4">
+              Timely structural inspection and restoration planning help you quickly begin the rebuilding process, effectively control costs, and avoid secondary damage. Our professional team provides comprehensive restoration solutions to ensure efficient rebuilding, getting you back to a safe and comfortable home sooner.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-12 text-center">
+      <a
+        href="#contactForm"
+        class="inline-block px-8 py-4 bg-primary text-white rounded-md shadow-md hover:bg-primary/90 transition-colors duration-300 scroll-to-center"
+      >
+        Schedule Your Free Structural Inspection
+      </a>
+    </div>
+  </div>
+</section> 
